@@ -1,11 +1,7 @@
 /* =====================================================
    ABHISHEK J. — PERFORMANCE MARKETING WEBSITE
-   Frontend JavaScript (GitHub Pages version — Web3Forms direct)
+   Frontend JavaScript
    ===================================================== */
-
-// Web3Forms access key — register at https://web3forms.com with PPCbyAbhishek@gmail.com
-// Replace the value below with the actual key after registering
-const WEB3FORMS_KEY = 'YOUR_WEB3FORMS_KEY_HERE';
 
 document.addEventListener('DOMContentLoaded', () => {
 
@@ -33,7 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // ---- Intersection Observer for scroll animations ----
   const scrollObserver = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
+    entries.forEach((entry, idx) => {
       if (entry.isIntersecting) {
         const delay = entry.target.dataset.scrollDelay || 0;
         setTimeout(() => {
@@ -129,6 +125,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const update = (now) => {
       const elapsed = now - start;
       const progress = Math.min(elapsed / duration, 1);
+      // Ease out cubic
       const ease = 1 - Math.pow(1 - progress, 3);
       const current = Math.floor(ease * target);
 
@@ -153,6 +150,7 @@ document.addEventListener('DOMContentLoaded', () => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         const el = entry.target;
+        // Set initial prefix for money stats
         if (el.dataset.target === '100' && el.dataset.suffix === 'M+') {
           el.dataset.prefix = '$';
         }
@@ -204,7 +202,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   sections.forEach(s => navObserver.observe(s));
 
-  // ---- Contact Form (Web3Forms direct for GitHub Pages) ----
+  // ---- Contact Form ----
   const contactForm = document.getElementById('contactForm');
   const formSuccess = document.getElementById('formSuccess');
   const submitBtn = document.getElementById('submitBtn');
@@ -232,25 +230,15 @@ document.addEventListener('DOMContentLoaded', () => {
         return;
       }
 
+      // Loading state
       submitBtn.disabled = true;
       submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
 
       try {
-        const response = await fetch('https://api.web3forms.com/submit', {
+        const response = await fetch('/api/contact', {
           method: 'POST',
-          headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-          body: JSON.stringify({
-            access_key: WEB3FORMS_KEY,
-            subject: `New Lead from Performance Marketing Site — ${formData.name}`,
-            from_name: 'Performance Marketing Website',
-            replyto: formData.email,
-            name: formData.name,
-            email: formData.email,
-            business: formData.business || 'Not provided',
-            monthly_budget: formData.budget || 'Not specified',
-            service_needed: formData.service || 'Not specified',
-            message: formData.message,
-          })
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(formData),
         });
 
         const data = await response.json();
@@ -258,9 +246,10 @@ document.addEventListener('DOMContentLoaded', () => {
         if (data.success) {
           contactForm.style.display = 'none';
           formSuccess.style.display = 'block';
+          // Scroll to success message
           formSuccess.scrollIntoView({ behavior: 'smooth', block: 'center' });
         } else {
-          showFormAlert('Something went wrong. Please try again or email directly.', 'error');
+          showFormAlert(data.error || 'Something went wrong. Please try again.', 'error');
           submitBtn.disabled = false;
           submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Send Message & Get Free Audit';
         }
@@ -277,6 +266,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function showFormAlert(message, type) {
+    // Remove existing alerts
     const existing = contactForm.querySelector('.form-alert');
     if (existing) existing.remove();
 
@@ -293,14 +283,17 @@ document.addEventListener('DOMContentLoaded', () => {
         : 'background: rgba(16,185,129,0.1); border: 1px solid rgba(16,185,129,0.3); color: #34d399;'}
     `;
     alert.textContent = message;
-    const btnParent = submitBtn.parentElement || submitBtn;
-    contactForm.insertBefore(alert, btnParent);
+    contactForm.insertBefore(alert, submitBtn.parentElement || submitBtn);
+
     setTimeout(() => alert.remove(), 5000);
   }
 
-  // ---- Active nav link style ----
+  // ---- Add active style for nav links ----
   const navStyle = document.createElement('style');
-  navStyle.textContent = `.nav-link.active { color: white; } .nav-link.active::after { width: 100%; }`;
+  navStyle.textContent = `
+    .nav-link.active { color: white; }
+    .nav-link.active::after { width: 100%; }
+  `;
   document.head.appendChild(navStyle);
 
   // ---- Tilt effect on cards ----
@@ -316,6 +309,12 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  console.log('%cAbhishek — Performance Marketing', 'color: #6366f1; font-weight: bold; font-size: 16px;');
+  // ---- Typing animation for hero title ----
+  const heroTitle = document.querySelector('.hero-title');
+  if (heroTitle) {
+    heroTitle.style.opacity = '1';
+  }
+
+  console.log('%cAbhishek J. — Performance Marketing', 'color: #6366f1; font-weight: bold; font-size: 16px;');
   console.log('%c$100M+ Revenue Generated | Google Certified | Top Rated on Upwork', 'color: #94a3b8; font-size: 12px;');
 });
