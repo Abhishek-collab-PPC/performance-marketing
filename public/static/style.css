@@ -680,7 +680,9 @@ h1, h2, h3, h4 {
 
 .about-image-wrap {
   position: relative;
-  padding-bottom: 40px; /* space for floating badges */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 /* ---- Profile Photo (About Section) ---- */
@@ -691,42 +693,41 @@ h1, h2, h3, h4 {
 }
 
 .about-profile-photo {
-  width: 100%;
-  max-width: 340px;
-  height: 420px;
+  width: 320px;
+  height: 320px;
   object-fit: cover;
   object-position: center top;
-  border-radius: var(--radius-lg);
+  border-radius: 50%;
   display: block;
   position: relative;
   z-index: 2;
-  box-shadow: 0 30px 80px rgba(0,0,0,0.6), 0 0 0 1px rgba(99,102,241,0.2);
-  /* Blend white background into dark theme */
-  filter: contrast(1.02) brightness(0.97);
-  border: 2px solid rgba(99,102,241,0.25);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.5), 0 0 0 4px rgba(99,102,241,0.3), 0 0 0 8px rgba(99,102,241,0.1);
+  border: 3px solid rgba(99,102,241,0.4);
 }
 
 .photo-glow-ring {
   position: absolute;
-  inset: -8px;
-  border-radius: calc(var(--radius-lg) + 8px);
+  width: 340px;
+  height: 340px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
   background: var(--gradient);
   z-index: 1;
-  opacity: 0.3;
-  filter: blur(16px);
+  opacity: 0.25;
+  filter: blur(20px);
   animation: pulse-glow 4s ease-in-out infinite;
 }
 
 .platform-badges-float {
-  position: absolute;
-  bottom: -20px;
-  left: 50%;
-  transform: translateX(-50%);
+  position: relative;
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 8px;
-  width: calc(100% - 20px);
-  max-width: 320px;
+  width: 100%;
+  max-width: 340px;
+  margin: 24px auto 0;
   z-index: 3;
 }
 
@@ -795,14 +796,15 @@ h1, h2, h3, h4 {
 
 .experience-badge {
   position: absolute;
-  top: -20px;
-  right: -20px;
+  top: 10px;
+  right: -16px;
   background: var(--gradient);
   border-radius: var(--radius);
-  padding: 20px;
+  padding: 16px 18px;
   text-align: center;
   box-shadow: 0 12px 40px rgba(99,102,241,0.5);
   animation: pulse-glow 3s ease-in-out infinite;
+  z-index: 4;
 }
 
 .exp-number {
