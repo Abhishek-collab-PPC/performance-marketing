@@ -1,17 +1,4 @@
-import { Hono } from 'hono'
-import { serveStatic } from 'hono/cloudflare-workers'
-
-const app = new Hono()
-
-// Serve static files
-app.use('/static/*', serveStatic({ root: './public' }))
-
-// Serve favicon
-app.get('/favicon.ico', serveStatic({ root: './public', path: '/static/favicon.svg' }))
-
-// Main page
-app.get('/', (c) => {
-  return c.html(`<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -967,62 +954,4 @@ app.get('/', (c) => {
 
   <script src="/static/app.js"></script>
 </body>
-</html>`)
-})
-
-// Contact form API endpoint — forwards to PPCbyAbhishek@gmail.com via Web3Forms
-app.post('/api/contact', async (c) => {
-  try {
-    const body = await c.req.json()
-    const { name, email, business, budget, service, message } = body
-
-    if (!name || !email || !message) {
-      return c.json({ success: false, error: 'Please fill in all required fields.' }, 400)
-    }
-
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
-    if (!emailRegex.test(email)) {
-      return c.json({ success: false, error: 'Please enter a valid email address.' }, 400)
-    }
-
-    // Send via Web3Forms (free email forwarding service)
-    const web3Response = await fetch('https://api.web3forms.com/submit', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-      body: JSON.stringify({
-        access_key: 'f9bde1f5-8e4a-4f2d-9e7c-3b1d6a2c8f0e', // Web3Forms key for PPCbyAbhishek@gmail.com
-        subject: `New Lead from Performance Marketing Site — ${name}`,
-        from_name: 'Performance Marketing Website',
-        replyto: email,
-        name,
-        email,
-        business: business || 'Not provided',
-        monthly_budget: budget || 'Not specified',
-        service_needed: service || 'Not specified',
-        message,
-        recipient: 'PPCbyAbhishek@gmail.com',
-      })
-    })
-
-    const result = await web3Response.json()
-
-    if (result.success) {
-      return c.json({
-        success: true,
-        message: 'Thank you! Your message has been received. I will respond within 24 hours.'
-      })
-    } else {
-      // Fallback: still acknowledge receipt (email issue shouldn't block UX)
-      console.error('Web3Forms error:', result)
-      return c.json({
-        success: true,
-        message: 'Thank you! Your message has been received. I will respond within 24 hours.'
-      })
-    }
-  } catch (e) {
-    console.error('Contact form error:', e)
-    return c.json({ success: false, error: 'Something went wrong. Please try again.' }, 500)
-  }
-})
-
-export default app
+</html>
