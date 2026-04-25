@@ -846,7 +846,15 @@ app.get('/', (c) => {
           </div>
         </div>
         <div class="contact-form-wrap animate-on-scroll">
-          <form class="contact-form" id="contactForm">
+          <form class="contact-form" id="contactForm"
+                action="https://formsubmit.co/PPCbyAbhishek@gmail.com"
+                method="POST">
+            <!-- FormSubmit.co config fields -->
+            <input type="hidden" name="_subject" value="New Lead from Performance Marketing Website">
+            <input type="hidden" name="_captcha" value="false">
+            <input type="hidden" name="_template" value="table">
+            <input type="hidden" name="_next" value="https://abhishek-collab-ppc.github.io/performance-marketing/?submitted=1">
+
             <div class="form-row">
               <div class="form-group">
                 <label for="name">Your Name *</label>
@@ -866,11 +874,11 @@ app.get('/', (c) => {
                 <label for="budget">Monthly Ad Budget</label>
                 <select id="budget" name="budget">
                   <option value="">Select budget range</option>
-                  <option value="under5k">Under $5,000/mo</option>
-                  <option value="5k-20k">$5,000 – $20,000/mo</option>
-                  <option value="20k-50k">$20,000 – $50,000/mo</option>
-                  <option value="50k-100k">$50,000 – $100,000/mo</option>
-                  <option value="over100k">Over $100,000/mo</option>
+                  <option value="Under $5,000/mo">Under $5,000/mo</option>
+                  <option value="$5,000 – $20,000/mo">$5,000 – $20,000/mo</option>
+                  <option value="$20,000 – $50,000/mo">$20,000 – $50,000/mo</option>
+                  <option value="$50,000 – $100,000/mo">$50,000 – $100,000/mo</option>
+                  <option value="Over $100,000/mo">Over $100,000/mo</option>
                 </select>
               </div>
             </div>
@@ -878,13 +886,13 @@ app.get('/', (c) => {
               <label for="service">Service Needed</label>
               <select id="service" name="service">
                 <option value="">Select a service</option>
-                <option value="google-ads">Google Ads Management</option>
-                <option value="meta-ads">Meta Ads (Facebook/Instagram)</option>
-                <option value="tracking">Tracking Architecture Setup</option>
-                <option value="feed">Product Feed Engineering</option>
-                <option value="lead-gen">Lead Generation Campaigns</option>
-                <option value="audit">Performance Audit &amp; Strategy</option>
-                <option value="full-service">Full-Service Paid Media</option>
+                <option value="Google Ads Management">Google Ads Management</option>
+                <option value="Meta Ads (Facebook/Instagram)">Meta Ads (Facebook/Instagram)</option>
+                <option value="Tracking Architecture Setup">Tracking Architecture Setup</option>
+                <option value="Product Feed Engineering">Product Feed Engineering</option>
+                <option value="Lead Generation Campaigns">Lead Generation Campaigns</option>
+                <option value="Performance Audit & Strategy">Performance Audit &amp; Strategy</option>
+                <option value="Full-Service Paid Media">Full-Service Paid Media</option>
               </select>
             </div>
             <div class="form-group">
@@ -975,7 +983,7 @@ app.get('/', (c) => {
 </html>`)
 })
 
-// Contact form API endpoint — forwards to PPCbyAbhishek@gmail.com via Web3Forms
+// Contact form API endpoint — forwards to PPCbyAbhishek@gmail.com via FormSubmit.co
 app.post('/api/contact', async (c) => {
   try {
     const body = await c.req.json()
@@ -990,39 +998,61 @@ app.post('/api/contact', async (c) => {
       return c.json({ success: false, error: 'Please enter a valid email address.' }, 400)
     }
 
-    // Send via Web3Forms (free email forwarding service)
-    const web3Response = await fetch('https://api.web3forms.com/submit', {
+    // Build a readable email body
+    const emailBody = [
+      `New lead from your Performance Marketing website:`,
+      ``,
+      `Name: ${name}`,
+      `Email: ${email}`,
+      `Business/Website: ${business || 'Not provided'}`,
+      `Monthly Budget: ${budget || 'Not specified'}`,
+      `Service Needed: ${service || 'Not specified'}`,
+      ``,
+      `Message:`,
+      message,
+    ].join('\n')
+
+    // Send via FormSubmit.co — free, no API key needed
+    // First submission will send a confirmation email to PPCbyAbhishek@gmail.com to activate
+    const formSubmitResponse = await fetch('https://formsubmit.co/ajax/PPCbyAbhishek@gmail.com', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
+      },
       body: JSON.stringify({
-        access_key: 'f9bde1f5-8e4a-4f2d-9e7c-3b1d6a2c8f0e', // Web3Forms key for PPCbyAbhishek@gmail.com
-        subject: `New Lead from Performance Marketing Site — ${name}`,
-        from_name: 'Performance Marketing Website',
-        replyto: email,
+        _subject: `🎯 New Lead: ${name} — Performance Marketing Site`,
+        _replyto: email,
+        _template: 'table',
+        _captcha: 'false',
         name,
         email,
-        business: business || 'Not provided',
-        monthly_budget: budget || 'Not specified',
-        service_needed: service || 'Not specified',
+        'Business / Website': business || 'Not provided',
+        'Monthly Budget': budget || 'Not specified',
+        'Service Needed': service || 'Not specified',
         message,
-        recipient: 'PPCbyAbhishek@gmail.com',
       })
     })
 
-    const result = await web3Response.json()
+    let fsResult: any = {}
+    try {
+      fsResult = await formSubmitResponse.json()
+    } catch (_) {}
 
-    if (result.success) {
+    // FormSubmit returns { success: "true" } (string, not boolean) on success
+    if (formSubmitResponse.ok && (fsResult.success === 'true' || fsResult.success === true)) {
       return c.json({
         success: true,
         message: 'Thank you! Your message has been received. I will respond within 24 hours.'
       })
     } else {
-      // Fallback: still acknowledge receipt (email issue shouldn't block UX)
-      console.error('Web3Forms error:', result)
+      // FormSubmit may fail on first use (requires email activation).
+      // Log the error server-side but still show a user-friendly message.
+      console.error('FormSubmit error:', formSubmitResponse.status, JSON.stringify(fsResult))
       return c.json({
-        success: true,
-        message: 'Thank you! Your message has been received. I will respond within 24 hours.'
-      })
+        success: false,
+        error: 'Email service not yet activated. Please email PPCbyAbhishek@gmail.com directly, or try again after activation.'
+      }, 503)
     }
   } catch (e) {
     console.error('Contact form error:', e)

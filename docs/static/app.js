@@ -202,62 +202,41 @@ document.addEventListener('DOMContentLoaded', () => {
 
   sections.forEach(s => navObserver.observe(s));
 
-  // ---- Contact Form ----
+  // ---- Contact Form — submits directly to FormSubmit.co (no server middleware) ----
   const contactForm = document.getElementById('contactForm');
   const formSuccess = document.getElementById('formSuccess');
   const submitBtn = document.getElementById('submitBtn');
 
+  // Show success message if redirected back with ?submitted=1
+  if (window.location.search.includes('submitted=1') && formSuccess) {
+    if (contactForm) contactForm.style.display = 'none';
+    formSuccess.style.display = 'block';
+    formSuccess.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }
+
   if (contactForm) {
-    contactForm.addEventListener('submit', async (e) => {
-      e.preventDefault();
+    contactForm.addEventListener('submit', function(e) {
+      // Validate required fields before letting native form submit go through
+      const name = contactForm.querySelector('#name').value.trim();
+      const email = contactForm.querySelector('#email').value.trim();
+      const message = contactForm.querySelector('#message').value.trim();
 
-      const formData = {
-        name: contactForm.querySelector('#name').value.trim(),
-        email: contactForm.querySelector('#email').value.trim(),
-        business: contactForm.querySelector('#business').value.trim(),
-        budget: contactForm.querySelector('#budget').value,
-        service: contactForm.querySelector('#service').value,
-        message: contactForm.querySelector('#message').value.trim(),
-      };
-
-      if (!formData.name || !formData.email || !formData.message) {
-        showFormAlert('Please fill in all required fields.', 'error');
+      if (!name || !email || !message) {
+        e.preventDefault();
+        showFormAlert('Please fill in all required fields (Name, Email, Message).', 'error');
         return;
       }
 
-      if (!isValidEmail(formData.email)) {
+      if (!isValidEmail(email)) {
+        e.preventDefault();
         showFormAlert('Please enter a valid email address.', 'error');
         return;
       }
 
-      // Loading state
+      // All good — show loading state and let the form POST to FormSubmit.co
       submitBtn.disabled = true;
       submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
-
-      try {
-        const response = await fetch('/api/contact', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(formData),
-        });
-
-        const data = await response.json();
-
-        if (data.success) {
-          contactForm.style.display = 'none';
-          formSuccess.style.display = 'block';
-          // Scroll to success message
-          formSuccess.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        } else {
-          showFormAlert(data.error || 'Something went wrong. Please try again.', 'error');
-          submitBtn.disabled = false;
-          submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Send Message & Get Free Audit';
-        }
-      } catch (err) {
-        showFormAlert('Network error. Please check your connection and try again.', 'error');
-        submitBtn.disabled = false;
-        submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Send Message & Get Free Audit';
-      }
+      // Native form submission proceeds; FormSubmit.co handles delivery to PPCbyAbhishek@gmail.com
     });
   }
 
@@ -266,26 +245,26 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function showFormAlert(message, type) {
+    if (!contactForm) return;
     // Remove existing alerts
     const existing = contactForm.querySelector('.form-alert');
     if (existing) existing.remove();
 
     const alert = document.createElement('div');
-    alert.className = `form-alert form-alert-${type}`;
-    alert.style.cssText = `
-      padding: 12px 16px;
-      border-radius: 8px;
-      font-size: 0.88rem;
-      font-weight: 500;
-      margin-bottom: 8px;
-      ${type === 'error'
+    alert.className = 'form-alert form-alert-' + type;
+    alert.style.cssText = [
+      'padding: 12px 16px',
+      'border-radius: 8px',
+      'font-size: 0.88rem',
+      'font-weight: 500',
+      'margin-bottom: 8px',
+      type === 'error'
         ? 'background: rgba(239,68,68,0.1); border: 1px solid rgba(239,68,68,0.3); color: #f87171;'
-        : 'background: rgba(16,185,129,0.1); border: 1px solid rgba(16,185,129,0.3); color: #34d399;'}
-    `;
-    alert.textContent = message;
-    contactForm.insertBefore(alert, submitBtn.parentElement || submitBtn);
-
-    setTimeout(() => alert.remove(), 5000);
+        : 'background: rgba(16,185,129,0.1); border: 1px solid rgba(16,185,129,0.3); color: #34d399;'
+    ].join(';');
+    alert.innerHTML = message;
+    contactForm.insertBefore(alert, submitBtn ? submitBtn.parentElement || submitBtn : contactForm.firstChild);
+    setTimeout(function() { if (alert.parentNode) alert.remove(); }, 6000);
   }
 
   // ---- Add active style for nav links ----
