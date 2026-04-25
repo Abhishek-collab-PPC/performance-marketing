@@ -689,60 +689,60 @@ h1, h2, h3, h4 {
 .about-hero-layout {
   display: flex;
   align-items: center;
-  gap: 24px;
+  gap: 28px;
   justify-content: center;
 }
 
 /* ---- Profile Photo (About Section) ---- */
 .about-photo-container {
-  position: relative;
   flex-shrink: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  position: relative;
+  display: inline-block;
+  line-height: 0;
 }
 
 .about-profile-photo {
-  width: 280px;
-  height: 280px;
+  width: 270px;
+  height: 270px;
   object-fit: cover;
   object-position: center top;
   border-radius: 50%;
   display: block;
   position: relative;
   z-index: 2;
-  box-shadow: 0 20px 60px rgba(0,0,0,0.5), 0 0 0 4px rgba(99,102,241,0.3), 0 0 0 8px rgba(99,102,241,0.1);
-  border: 3px solid rgba(99,102,241,0.4);
+  border: 3px solid rgba(99,102,241,0.5);
+  box-shadow:
+    0 0 0 8px rgba(99,102,241,0.12),
+    0 0 40px rgba(99,102,241,0.35),
+    0 20px 60px rgba(0,0,0,0.5);
 }
 
+/* Subtle animated glow — stays behind the photo, no solid bg */
 .photo-glow-ring {
   position: absolute;
-  width: 300px;
-  height: 300px;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  inset: -12px;
   border-radius: 50%;
-  background: var(--gradient);
+  background: transparent;
+  border: 2px solid rgba(99,102,241,0.25);
+  box-shadow: 0 0 30px rgba(99,102,241,0.3), inset 0 0 30px rgba(99,102,241,0.1);
   z-index: 1;
-  opacity: 0.25;
-  filter: blur(20px);
   animation: pulse-glow 4s ease-in-out infinite;
+  pointer-events: none;
 }
 
 /* ---- Cards column (right of photo) ---- */
 .about-cards-col {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 10px;
   align-items: stretch;
+  min-width: 150px;
 }
 
 .platform-badges-float {
   display: flex;
   flex-direction: column;
   gap: 8px;
-  z-index: 3;
 }
 
 /* Legacy - keep for fallback */
@@ -813,13 +813,13 @@ h1, h2, h3, h4 {
 .experience-badge {
   position: relative;
   background: var(--gradient);
-  border-radius: var(--radius);
-  padding: 18px 22px;
+  border-radius: 16px;
+  padding: 22px 20px 20px;
   text-align: center;
   box-shadow: 0 12px 40px rgba(99,102,241,0.5);
   animation: pulse-glow 3s ease-in-out infinite;
   z-index: 4;
-  min-width: 120px;
+  min-width: 148px;
 }
 
 .exp-number {
@@ -2029,10 +2029,10 @@ h1, h2, h3, h4 {
   .credentials-grid { grid-template-columns: 1fr; }
   .footer-grid { grid-template-columns: 1fr 1fr; }
   .about-grid { grid-template-columns: 1fr; gap: 48px; }
-  .about-visual { max-width: 500px; }
+  .about-visual { max-width: 520px; }
   .about-hero-layout { gap: 20px; }
-  .about-profile-photo { width: 240px; height: 240px; }
-  .photo-glow-ring { width: 260px; height: 260px; }
+  .about-profile-photo { width: 220px; height: 220px; }
+  .experience-badge { min-width: 130px; padding: 18px 16px; }
   .approach-connector { display: none; }
   .approach-steps { gap: 40px; }
 }
