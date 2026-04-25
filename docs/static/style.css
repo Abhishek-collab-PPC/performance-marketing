@@ -676,92 +676,158 @@ h1, h2, h3, h4 {
 
 .about-visual {
   position: relative;
-}
-
-.about-image-wrap {
-  position: relative;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-/* ---- About Hero Layout: photo left + cards right ---- */
-.about-hero-layout {
-  display: flex;
-  align-items: center;
-  gap: 28px;
   justify-content: center;
 }
 
-/* ---- Profile Photo (About Section) ---- */
-.about-photo-container {
-  flex-shrink: 0;
+/* ================================================================
+   ABOUT COMPOSITION  –  matches the reference exactly:
+   [ circular-photo ]  [ badge-grid + exp-badge overlapping ]
+   ================================================================ */
+.about-composition {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  justify-content: center;
+}
+
+/* ---------- Left: photo with layered halo ---------- */
+.about-photo-wrap {
   position: relative;
-  display: inline-block;
-  line-height: 0;
+  flex-shrink: 0;
+  width: 300px;
+  height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Outer dark ring (visible halo in reference) */
+.about-halo-outer {
+  position: absolute;
+  inset: -18px;
+  border-radius: 50%;
+  border: 2px solid rgba(99,102,241,0.18);
+  box-shadow:
+    0 0 0 14px rgba(10,10,30,0.55),
+    0 0 60px rgba(99,102,241,0.25);
+  pointer-events: none;
+  z-index: 1;
+  animation: pulse-glow 4s ease-in-out infinite;
+}
+
+/* Inner glowing ring directly around photo */
+.about-halo-inner {
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  border: 2px solid rgba(99,102,241,0.45);
+  box-shadow: 0 0 20px rgba(99,102,241,0.4);
+  pointer-events: none;
+  z-index: 3;
 }
 
 .about-profile-photo {
-  width: 270px;
-  height: 270px;
+  width: 300px;
+  height: 300px;
   object-fit: cover;
-  object-position: center top;
+  object-position: center center;
   border-radius: 50%;
   display: block;
   position: relative;
   z-index: 2;
-  border: 3px solid rgba(99,102,241,0.5);
-  box-shadow:
-    0 0 0 8px rgba(99,102,241,0.12),
-    0 0 40px rgba(99,102,241,0.35),
-    0 20px 60px rgba(0,0,0,0.5);
 }
 
-/* Subtle animated glow — stays behind the photo, no solid bg */
-.photo-glow-ring {
-  position: absolute;
-  inset: -12px;
-  border-radius: 50%;
-  background: transparent;
-  border: 2px solid rgba(99,102,241,0.25);
-  box-shadow: 0 0 30px rgba(99,102,241,0.3), inset 0 0 30px rgba(99,102,241,0.1);
-  z-index: 1;
-  animation: pulse-glow 4s ease-in-out infinite;
-  pointer-events: none;
+/* ---------- Right: badges area ---------- */
+.about-badges-area {
+  position: relative;
+  flex-shrink: 0;
 }
 
-/* ---- Cards column (right of photo) ---- */
-.about-cards-col {
+/* 3 platform badges stacked vertically */
+.about-badge-grid {
   display: flex;
   flex-direction: column;
   gap: 10px;
-  align-items: stretch;
-  min-width: 150px;
+  padding-top: 130px; /* push badges down so exp badge fits above */
 }
 
-.platform-badges-float {
+.platform-badge {
+  background: rgba(15,15,35,0.85);
+  border: 1px solid rgba(99,102,241,0.2);
+  border-radius: 12px;
+  padding: 12px 18px;
+  font-size: 0.88rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--text-muted);
+  backdrop-filter: blur(10px);
+  min-width: 148px;
+  white-space: nowrap;
+}
+
+.platform-badge i { font-size: 1rem; }
+.platform-badge.google { border-color: rgba(66,133,244,0.45); color: #4285f4; }
+.platform-badge.ms    { border-color: rgba(0,164,239,0.45);  color: #00a4ef; }
+.platform-badge.amazon{ border-color: rgba(255,153,0,0.45);  color: #ff9900; }
+
+/* Experience badge – absolutely positioned top-right of the badges area */
+.experience-badge {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: var(--gradient);
+  border-radius: 16px;
+  padding: 22px 20px 18px;
+  text-align: center;
+  box-shadow: 0 12px 40px rgba(99,102,241,0.55);
+  animation: pulse-glow 3s ease-in-out infinite;
+  z-index: 5;
+  min-width: 148px;
+  height: 118px;
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  align-items: center;
+  justify-content: center;
 }
 
-/* Legacy - keep for fallback */
-.about-image-placeholder {
-  background: var(--dark-2);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-lg);
-  padding: 48px;
-  text-align: center;
+.exp-number {
+  display: block;
+  font-size: 2.4rem;
+  font-weight: 900;
+  color: white;
+  line-height: 1;
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+.exp-text {
+  font-size: 0.68rem;
+  color: rgba(255,255,255,0.88);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-top: 6px;
+  line-height: 1.4;
+}
+
+/* Legacy placeholders – keep for safety */
+.about-image-wrap { display: none; }
+.about-hero-layout { display: none; }
+.about-cards-col   { display: none; }
+.platform-badges-float { display: none; }
+.about-image-placeholder { display: none; }
+.photo-glow-ring { display: none; }
+.about-photo-container { display: none; }
+
+.platform-badges {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
   position: relative;
-  overflow: hidden;
-}
-
-.about-image-placeholder::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: var(--gradient-subtle);
-  z-index: 0;
+  z-index: 1;
 }
 
 .profile-avatar {
@@ -779,63 +845,6 @@ h1, h2, h3, h4 {
   z-index: 1;
   animation: float 4s ease-in-out infinite;
   box-shadow: 0 20px 60px rgba(99,102,241,0.4);
-}
-
-.platform-badges {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 10px;
-  position: relative;
-  z-index: 1;
-}
-
-.platform-badge {
-  background: rgba(15,15,35,0.8);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-sm);
-  padding: 10px 14px;
-  font-size: 0.82rem;
-  font-weight: 600;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  color: var(--text-muted);
-  backdrop-filter: blur(10px);
-  min-width: 120px;
-  white-space: nowrap;
-}
-
-.platform-badge.google { border-color: rgba(66,133,244,0.4); color: #4285f4; }
-.platform-badge.meta { border-color: rgba(24,119,242,0.4); color: #1877f2; }
-.platform-badge.ms { border-color: rgba(0,120,212,0.4); color: #00a4ef; }
-.platform-badge.amazon { border-color: rgba(255,153,0,0.4); color: #ff9900; }
-
-.experience-badge {
-  position: relative;
-  background: var(--gradient);
-  border-radius: 16px;
-  padding: 22px 20px 20px;
-  text-align: center;
-  box-shadow: 0 12px 40px rgba(99,102,241,0.5);
-  animation: pulse-glow 3s ease-in-out infinite;
-  z-index: 4;
-  min-width: 148px;
-}
-
-.exp-number {
-  display: block;
-  font-size: 2rem;
-  font-weight: 900;
-  color: white;
-  font-family: 'Space Grotesk', sans-serif;
-}
-
-.exp-text {
-  font-size: 0.7rem;
-  color: rgba(255,255,255,0.8);
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
 }
 
 .about-text {
@@ -2029,10 +2038,11 @@ h1, h2, h3, h4 {
   .credentials-grid { grid-template-columns: 1fr; }
   .footer-grid { grid-template-columns: 1fr 1fr; }
   .about-grid { grid-template-columns: 1fr; gap: 48px; }
-  .about-visual { max-width: 520px; }
-  .about-hero-layout { gap: 20px; }
-  .about-profile-photo { width: 220px; height: 220px; }
-  .experience-badge { min-width: 130px; padding: 18px 16px; }
+  .about-composition { gap: 24px; }
+  .about-photo-wrap { width: 240px; height: 240px; }
+  .about-profile-photo { width: 240px; height: 240px; }
+  .about-badge-grid { padding-top: 108px; }
+  .experience-badge { height: 100px; min-width: 130px; padding: 16px; }
   .approach-connector { display: none; }
   .approach-steps { gap: 40px; }
 }
@@ -2073,10 +2083,11 @@ h1, h2, h3, h4 {
   .metric-value { font-size: 1rem; margin-bottom: 0; }
   .metric-label { text-align: right; }
 
-  .about-hero-layout { flex-direction: column; align-items: center; gap: 24px; }
-  .about-cards-col { flex-direction: row; flex-wrap: wrap; justify-content: center; gap: 10px; }
-  .platform-badges-float { flex-direction: row; flex-wrap: wrap; gap: 8px; }
-  .experience-badge { min-width: unset; padding: 14px 18px; }
+  .about-composition { flex-direction: column; align-items: center; gap: 32px; }
+  .about-badge-grid { padding-top: 0; flex-direction: row; flex-wrap: wrap; justify-content: center; }
+  .about-badges-area { display: flex; flex-direction: row; flex-wrap: wrap; gap: 10px; justify-content: center; }
+  .experience-badge { position: relative; top: auto; left: auto; right: auto; height: auto; margin-bottom: 0; }
+  .platform-badge { min-width: 130px; }
 
   .approach-steps { flex-direction: column; align-items: center; }
   .approach-step { max-width: 100%; padding: 0; }
