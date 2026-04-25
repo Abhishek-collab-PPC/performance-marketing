@@ -159,24 +159,24 @@ app.get('/', (c) => {
     <div class="container">
       <div class="about-grid">
         <div class="about-visual animate-on-scroll">
-          <div class="about-image-wrap">
-            <div class="about-hero-layout">
-              <!-- Circular profile photo -->
-              <div class="about-photo-container">
-                <div class="photo-glow-ring"></div>
-                <img src="/static/profile.jpg" alt="Abhishek – Paid Media Strategist" class="about-profile-photo">
+          <div class="about-composition">
+            <!-- Left: circular photo with halo ring -->
+            <div class="about-photo-wrap">
+              <div class="about-halo-outer"></div>
+              <div class="about-halo-inner"></div>
+              <img src="/static/profile.jpg" alt="Abhishek – Paid Media Strategist" class="about-profile-photo">
+            </div>
+            <!-- Right: 2x2 badge grid + experience badge overlapping top-right -->
+            <div class="about-badges-area">
+              <div class="about-badge-grid">
+                <div class="platform-badge google"><i class="fab fa-google"></i><span>Google Ads</span></div>
+                <div class="platform-badge ms"><i class="fab fa-microsoft"></i><span>Microsoft Ads</span></div>
+                <div class="platform-badge amazon"><i class="fab fa-amazon"></i><span>Amazon Ads</span></div>
               </div>
-              <!-- Floating cards column -->
-              <div class="about-cards-col">
-                <div class="experience-badge">
-                  <span class="exp-number">6+</span>
-                  <span class="exp-text">Years<br>Experience</span>
-                </div>
-                <div class="platform-badges-float">
-                  <div class="platform-badge google"><i class="fab fa-google"></i> Google Ads</div>
-                  <div class="platform-badge ms"><i class="fab fa-microsoft"></i> Microsoft Ads</div>
-                  <div class="platform-badge amazon"><i class="fab fa-amazon"></i> Amazon Ads</div>
-                </div>
+              <!-- Experience badge overlapping top-right of the grid -->
+              <div class="experience-badge">
+                <span class="exp-number">6+</span>
+                <span class="exp-text">YEARS<br>EXPERIENCE</span>
               </div>
             </div>
           </div>
