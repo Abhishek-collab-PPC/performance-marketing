@@ -1,0 +1,4 @@
+# In your terminal, extract the archive then:
+cd webapp
+git remote add origin https://github.com/Abhishek-collab-PPC/performance-marketing.git
+git push -u origin main
