@@ -83,6 +83,18 @@ document.addEventListener('DOMContentLoaded', () => {
     } else {
       backToTop.classList.remove('visible');
     }
+
+    // Sticky CTA — show after scrolling past hero, hide near contact section
+    const stickyCta = document.getElementById('stickyCta');
+    if (stickyCta) {
+      const contactSection = document.getElementById('contact');
+      const contactTop = contactSection ? contactSection.getBoundingClientRect().top + scrollTop : Infinity;
+      if (scrollTop > 500 && scrollTop < contactTop - 200) {
+        stickyCta.classList.add('visible');
+      } else {
+        stickyCta.classList.remove('visible');
+      }
+    }
   });
 
   // ---- Hamburger Menu ----

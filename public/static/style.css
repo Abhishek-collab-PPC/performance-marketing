@@ -1289,7 +1289,7 @@ h1, h2, h3, h4 {
 
 /* ---- TESTIMONIALS ---- */
 .testimonials-section {
-  padding: 100px 0;
+  padding: 70px 0;
   background: var(--dark);
 }
 
@@ -1297,15 +1297,23 @@ h1, h2, h3, h4 {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 16px;
+  gap: 14px;
   margin-top: 20px;
+  flex-wrap: wrap;
 }
 
-.upwork-logo {
-  height: 24px;
-  width: auto;
-  filter: brightness(0) invert(1);
-  opacity: 0.7;
+.upwork-inline-logo {
+  display: inline-flex;
+  align-items: center;
+  background: rgba(20,168,0,0.12);
+  border: 1px solid rgba(20,168,0,0.25);
+  border-radius: 100px;
+  padding: 6px 16px;
+  line-height: 1;
+}
+
+.upwork-inline-logo svg {
+  display: block;
 }
 
 .jss-badge {
@@ -1427,7 +1435,7 @@ h1, h2, h3, h4 {
 
 /* ---- CREDENTIALS ---- */
 .credentials-section {
-  padding: 100px 0;
+  padding: 70px 0;
   background: var(--dark-2);
 }
 
@@ -1453,6 +1461,41 @@ h1, h2, h3, h4 {
   display: flex;
   flex-direction: column;
   gap: 2px;
+}
+
+/* Compact cert summary */
+.cert-summary-block {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.cert-summary-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 14px 16px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+  background: rgba(255,255,255,0.02);
+}
+
+.cert-summary-text {
+  flex: 1;
+}
+
+.cert-summary-text strong {
+  display: block;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 3px;
+}
+
+.cert-summary-text span {
+  font-size: 0.78rem;
+  color: var(--text-dim);
+  line-height: 1.5;
 }
 
 .cert-item {
@@ -2083,6 +2126,16 @@ h1, h2, h3, h4 {
   .metric-value { font-size: 1rem; margin-bottom: 0; }
   .metric-label { text-align: right; }
 
+  /* Tighter section padding on mobile */
+  .stats-section, .services-section, .case-studies-section,
+  .testimonials-section, .credentials-section, .contact-section { padding: 52px 0; }
+  .about-section { padding: 52px 0; }
+  .section-header { margin-bottom: 32px; }
+  .section-title { font-size: 1.9rem; }
+
+  /* Collapse footer on mobile */
+  .footer-links { display: none; }
+
   .about-composition { flex-direction: column; align-items: center; gap: 32px; }
   .about-badge-grid { padding-top: 0; flex-direction: row; flex-wrap: wrap; justify-content: center; }
   .about-badges-area { display: flex; flex-direction: row; flex-wrap: wrap; gap: 10px; justify-content: center; }
@@ -2104,8 +2157,12 @@ h1, h2, h3, h4 {
 @media (max-width: 480px) {
   .stats-grid { grid-template-columns: 1fr; }
   .hero-badge { font-size: 0.75rem; padding: 6px 14px; }
-  .hero-title { font-size: 2rem; }
-  .section-title { font-size: 1.8rem; }
+  .hero-title { font-size: 1.9rem; }
+  .section-title { font-size: 1.65rem; }
+  .testimonial-card { padding: 22px; }
+  .contact-form-wrap { padding: 20px; }
+  .case-study-card { padding: 22px; }
+  .stat-card { padding: 24px 16px; }
 }
 
 /* ---- Scroll Progress Bar ---- */
@@ -2117,6 +2174,62 @@ h1, h2, h3, h4 {
   background: var(--gradient);
   z-index: 9999;
   transition: width 0.1s linear;
+}
+
+/* ---- Sticky CTA ---- */
+.sticky-cta {
+  position: fixed;
+  right: 20px;
+  bottom: 90px;
+  z-index: 600;
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.35s ease, transform 0.35s ease;
+  pointer-events: none;
+}
+
+.sticky-cta.visible {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.sticky-cta-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  background: linear-gradient(135deg, #6366f1, #8b5cf6);
+  color: #fff;
+  font-size: 0.88rem;
+  font-weight: 700;
+  padding: 13px 20px;
+  border-radius: 50px;
+  text-decoration: none;
+  box-shadow: 0 8px 28px rgba(99,102,241,0.45);
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.sticky-cta-btn:hover {
+  transform: translateY(-3px) scale(1.03);
+  box-shadow: 0 12px 36px rgba(99,102,241,0.6);
+}
+
+.sticky-cta-btn i {
+  font-size: 0.95rem;
+}
+
+@media (max-width: 768px) {
+  .sticky-cta {
+    right: 16px;
+    bottom: 80px;
+  }
+  .sticky-cta-btn {
+    font-size: 0.85rem;
+    padding: 12px 18px;
+    gap: 8px;
+  }
 }
 
 /* ---- Back to Top ---- */
