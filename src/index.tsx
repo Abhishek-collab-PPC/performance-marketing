@@ -185,47 +185,24 @@ app.get('/', (c) => {
           <p class="section-label">About Me</p>
           <h2 class="section-title">Most Paid Media Accounts Have a <span class="gradient-text">Systems Problem</span></h2>
           <p class="about-text">
-            Broken tracking. Underperforming feeds. Performance Max running without clean signals. Creative and bidding misaligned. That's where growth stalls — and that's exactly where I come in.
-          </p>
-          <p class="about-text">
-            I'm a paid media strategist with <strong>6+ years</strong> managing Google Ads, Meta Ads, and Microsoft Ads for eCommerce brands and lead generation businesses across the US, UK, Canada, and Australia. Currently Head of Marketing at Advance and Beyond, previously at ShoppingIQ (a Google CSS Partner).
+            I'm a paid media strategist with <strong>6+ years</strong> managing Google Ads, Meta Ads, and Microsoft Ads for eCommerce &amp; lead gen businesses across the US, UK, Canada, and Australia. Currently Head of Marketing at Advance and Beyond, previously at ShoppingIQ (Google CSS Partner).
           </p>
           <div class="pillars-list">
-            <h3 class="pillars-title">My 5 Core Pillars</h3>
             <div class="pillar-item">
               <div class="pillar-icon"><i class="fas fa-code-branch"></i></div>
-              <div>
-                <strong>Tracking Architecture</strong>
-                <span>GA4, GTM, CAPI, Enhanced Conversions, UET — that actually works</span>
-              </div>
+              <div><strong>Tracking Architecture</strong><span>GA4, GTM, CAPI, Enhanced Conversions — that actually works</span></div>
             </div>
             <div class="pillar-item">
               <div class="pillar-icon"><i class="fas fa-store"></i></div>
-              <div>
-                <strong>Product Feed Engineering</strong>
-                <span>Merchant Center optimization for maximum auction eligibility</span>
-              </div>
+              <div><strong>Product Feed Engineering</strong><span>Merchant Center optimization for maximum auction eligibility</span></div>
             </div>
             <div class="pillar-item">
               <div class="pillar-icon"><i class="fas fa-sitemap"></i></div>
-              <div>
-                <strong>Structured Campaign Frameworks</strong>
-                <span>Search, Shopping, and Performance Max built for scale</span>
-              </div>
-            </div>
-            <div class="pillar-item">
-              <div class="pillar-icon"><i class="fas fa-search"></i></div>
-              <div>
-                <strong>Query-Level Refinement</strong>
-                <span>Signal quality improvements that unlock machine learning efficiency</span>
-              </div>
+              <div><strong>Structured Campaign Frameworks</strong><span>Search, Shopping &amp; Performance Max built for scale</span></div>
             </div>
             <div class="pillar-item">
               <div class="pillar-icon"><i class="fas fa-magic"></i></div>
-              <div>
-                <strong>Creative & Bidding Alignment</strong>
-                <span>Matching creative strategy with bid intelligence for maximum performance</span>
-              </div>
+              <div><strong>Creative &amp; Bidding Alignment</strong><span>Matching creative strategy with bid intelligence for peak ROAS</span></div>
             </div>
           </div>
           <div class="about-actions">
@@ -242,132 +219,32 @@ app.get('/', (c) => {
     <div class="container">
       <div class="section-header">
         <p class="section-label">What I Do</p>
-        <h2 class="section-title">Full-Funnel Paid Media<br><span class="gradient-text">Services</span></h2>
-        <p class="section-subtitle">End-to-end performance marketing systems built for sustainable, profitable growth</p>
+        <h2 class="section-title">Full-Funnel Paid Media <span class="gradient-text">Services</span></h2>
       </div>
-      <div class="services-grid">
+      <div class="services-grid services-grid-3">
         <div class="service-card animate-on-scroll featured">
           <div class="service-badge">Most Popular</div>
           <div class="service-icon"><i class="fab fa-google"></i></div>
           <h3>Google Ads Management</h3>
-          <p>Full-funnel Google Ads strategy covering Search, Shopping, Performance Max, Display, and Video campaigns. Structured for scale with rigorous query-level management.</p>
-          <ul class="service-features">
-            <li><i class="fas fa-check"></i> Search &amp; Shopping Campaign Architecture</li>
-            <li><i class="fas fa-check"></i> Performance Max Optimization</li>
-            <li><i class="fas fa-check"></i> Negative Keyword Mining</li>
-            <li><i class="fas fa-check"></i> Bid Strategy Management</li>
-            <li><i class="fas fa-check"></i> Weekly Performance Reporting</li>
-          </ul>
+          <p>Full-funnel strategy: Search, Shopping, Performance Max, Display &amp; Video — structured for scale with rigorous query-level management and weekly reporting.</p>
+          <div class="service-chips"><span>Search &amp; Shopping</span><span>PMax</span><span>Bid Strategy</span><span>Reporting</span></div>
           <a href="#contact" class="service-cta">Get Started <i class="fas fa-arrow-right"></i></a>
         </div>
 
         <div class="service-card animate-on-scroll">
           <div class="service-icon"><i class="fab fa-meta"></i></div>
-          <h3>Meta Ads (Facebook &amp; Instagram)</h3>
-          <p>Strategic Meta advertising with advanced audience architecture, creative testing frameworks, and CAPI implementation for accurate conversion tracking.</p>
-          <ul class="service-features">
-            <li><i class="fas fa-check"></i> Audience Architecture &amp; Segmentation</li>
-            <li><i class="fas fa-check"></i> Creative Testing Frameworks</li>
-            <li><i class="fas fa-check"></i> Conversions API (CAPI) Setup</li>
-            <li><i class="fas fa-check"></i> Retargeting &amp; Lookalike Campaigns</li>
-            <li><i class="fas fa-check"></i> Attribution Modelling</li>
-          </ul>
-          <a href="#contact" class="service-cta">Get Started <i class="fas fa-arrow-right"></i></a>
-        </div>
-
-        <div class="service-card animate-on-scroll">
-          <div class="service-icon"><i class="fas fa-cogs"></i></div>
-          <h3>Tracking Architecture</h3>
-          <p>End-to-end conversion tracking setup ensuring every click, lead, and sale is properly attributed — the foundation of every data-driven decision.</p>
-          <ul class="service-features">
-            <li><i class="fas fa-check"></i> GA4 Setup &amp; Configuration</li>
-            <li><i class="fas fa-check"></i> Google Tag Manager</li>
-            <li><i class="fas fa-check"></i> Enhanced Conversions</li>
-            <li><i class="fas fa-check"></i> Facebook Pixel + CAPI</li>
-            <li><i class="fas fa-check"></i> UET for Microsoft Ads</li>
-          </ul>
-          <a href="#contact" class="service-cta">Get Started <i class="fas fa-arrow-right"></i></a>
-        </div>
-
-        <div class="service-card animate-on-scroll">
-          <div class="service-icon"><i class="fas fa-shopping-cart"></i></div>
-          <h3>Product Feed Engineering</h3>
-          <p>Merchant Center optimization and product feed engineering to improve auction eligibility, Shopping performance, and CSS advantage utilization.</p>
-          <ul class="service-features">
-            <li><i class="fas fa-check"></i> Google Merchant Center Setup</li>
-            <li><i class="fas fa-check"></i> Feed Attribute Optimization</li>
-            <li><i class="fas fa-check"></i> Google CSS Partner Benefits</li>
-            <li><i class="fas fa-check"></i> Product Title &amp; Description Optimization</li>
-            <li><i class="fas fa-check"></i> Disapproval Resolution</li>
-          </ul>
-          <a href="#contact" class="service-cta">Get Started <i class="fas fa-arrow-right"></i></a>
-        </div>
-
-        <div class="service-card animate-on-scroll">
-          <div class="service-icon"><i class="fas fa-users"></i></div>
-          <h3>Lead Generation Campaigns</h3>
-          <p>High-converting lead gen campaigns across Google and Meta for service businesses in roofing, healthcare, real estate, and B2B sectors.</p>
-          <ul class="service-features">
-            <li><i class="fas fa-check"></i> Lead Magnet Strategy</li>
-            <li><i class="fas fa-check"></i> Landing Page CRO</li>
-            <li><i class="fas fa-check"></i> CPL Optimization</li>
-            <li><i class="fas fa-check"></i> Lead Quality Scoring</li>
-            <li><i class="fas fa-check"></i> Multi-Platform Attribution</li>
-          </ul>
+          <h3>Meta Ads</h3>
+          <p>Advanced audience architecture, creative testing frameworks, and CAPI implementation for accurate attribution and profitable scaling on Facebook &amp; Instagram.</p>
+          <div class="service-chips"><span>Audience Segmentation</span><span>CAPI</span><span>Retargeting</span><span>Creative Testing</span></div>
           <a href="#contact" class="service-cta">Get Started <i class="fas fa-arrow-right"></i></a>
         </div>
 
         <div class="service-card animate-on-scroll">
           <div class="service-icon"><i class="fas fa-chart-pie"></i></div>
-          <h3>Performance Audit &amp; Strategy</h3>
-          <p>Comprehensive audit of your existing paid media accounts identifying wasted spend, missed opportunities, and a 90-day growth roadmap.</p>
-          <ul class="service-features">
-            <li><i class="fas fa-check"></i> Full Account Audit</li>
-            <li><i class="fas fa-check"></i> Competitor Analysis</li>
-            <li><i class="fas fa-check"></i> 90-Day Growth Roadmap</li>
-            <li><i class="fas fa-check"></i> Budget Allocation Strategy</li>
-            <li><i class="fas fa-check"></i> Quick-Win Identification</li>
-          </ul>
+          <h3>Tracking, Feeds &amp; Audit</h3>
+          <p>GA4, GTM, CAPI &amp; Enhanced Conversions setup. Merchant Center feed engineering. Full account audits with a 90-day growth roadmap and quick-win identification.</p>
+          <div class="service-chips"><span>GA4 &amp; GTM</span><span>Feed Engineering</span><span>Full Audit</span><span>Lead Gen</span></div>
           <a href="#contact" class="service-cta">Get Started <i class="fas fa-arrow-right"></i></a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ========== APPROACH SECTION ========== -->
-  <section class="approach-section">
-    <div class="container">
-      <div class="section-header">
-        <p class="section-label">My Methodology</p>
-        <h2 class="section-title">A <span class="gradient-text">Data-First</span> Approach<br>to Paid Media</h2>
-      </div>
-      <div class="approach-steps">
-        <div class="approach-step animate-on-scroll">
-          <div class="step-number">01</div>
-          <div class="step-icon"><i class="fas fa-microscope"></i></div>
-          <h3>Deep Audit &amp; Discovery</h3>
-          <p>Full account audit — tracking health, campaign structure, feed quality, signal cleanliness, budget allocation, and competitor landscape.</p>
-        </div>
-        <div class="approach-connector"></div>
-        <div class="approach-step animate-on-scroll">
-          <div class="step-number">02</div>
-          <div class="step-icon"><i class="fas fa-drafting-compass"></i></div>
-          <h3>Infrastructure Build</h3>
-          <p>Fix tracking, optimize feeds, restructure campaigns. Build the foundation that makes machine learning efficient and data reliable.</p>
-        </div>
-        <div class="approach-connector"></div>
-        <div class="approach-step animate-on-scroll">
-          <div class="step-number">03</div>
-          <div class="step-icon"><i class="fas fa-rocket"></i></div>
-          <h3>Launch &amp; Scale</h3>
-          <p>Methodical launch with controlled budget scaling. Test creatives, validate signals, refine queries — scale what works, cut what doesn't.</p>
-        </div>
-        <div class="approach-connector"></div>
-        <div class="approach-step animate-on-scroll">
-          <div class="step-number">04</div>
-          <div class="step-icon"><i class="fas fa-sync-alt"></i></div>
-          <h3>Optimize &amp; Report</h3>
-          <p>Continuous optimization with weekly transparent reporting. ROAS, CPL, revenue — every metric tied to business outcomes.</p>
         </div>
       </div>
     </div>
@@ -491,59 +368,7 @@ app.get('/', (c) => {
           </div>
         </div>
 
-        <div class="case-study-card animate-on-scroll">
-          <div class="case-study-header">
-            <div class="case-tag dtc">DTC</div>
-            <div class="case-location"><i class="fas fa-map-marker-alt"></i> United States</div>
-          </div>
-          <div class="case-study-icon"><i class="fas fa-box-open"></i></div>
-          <h3 class="case-study-title">DTC Brand Revenue Growth</h3>
-          <p class="case-study-desc">Implemented full-funnel marketing strategy for a US direct-to-consumer brand, achieving consistent month-over-month revenue increases while reducing customer acquisition cost.</p>
-          <div class="case-metrics">
-            <div class="metric-item">
-              <span class="metric-value highlight">25% MoM</span>
-              <span class="metric-label">Revenue Growth</span>
-            </div>
-            <div class="metric-item">
-              <span class="metric-value">$500K+</span>
-              <span class="metric-label">Revenue Lift</span>
-            </div>
-            <div class="metric-item">
-              <span class="metric-value">35%</span>
-              <span class="metric-label">CAC Reduction</span>
-            </div>
-          </div>
-          <div class="case-tags">
-            <span>Full-Funnel</span><span>Meta + Google</span><span>DTC</span>
-          </div>
-        </div>
 
-        <div class="case-study-card animate-on-scroll">
-          <div class="case-study-header">
-            <div class="case-tag leadgen">Lead Gen</div>
-            <div class="case-location"><i class="fas fa-map-marker-alt"></i> United States</div>
-          </div>
-          <div class="case-study-icon"><i class="fas fa-funnel-dollar"></i></div>
-          <h3 class="case-study-title">Multi-Vertical Lead Generation</h3>
-          <p class="case-study-desc">Optimized lead generation campaigns across roofing, healthcare, and real estate verticals. Significantly reduced cost per lead while maintaining and improving lead quality scores.</p>
-          <div class="case-metrics">
-            <div class="metric-item">
-              <span class="metric-value highlight">50%</span>
-              <span class="metric-label">CPL Reduction</span>
-            </div>
-            <div class="metric-item">
-              <span class="metric-value">10K+</span>
-              <span class="metric-label">Leads Generated</span>
-            </div>
-            <div class="metric-item">
-              <span class="metric-value">18%</span>
-              <span class="metric-label">Conversion Rate</span>
-            </div>
-          </div>
-          <div class="case-tags">
-            <span>Lead Gen</span><span>Roofing</span><span>Healthcare</span><span>Real Estate</span>
-          </div>
-        </div>
 
       </div>
     </div>
@@ -556,19 +381,18 @@ app.get('/', (c) => {
         <p class="section-label">Client Testimonials</p>
         <h2 class="section-title">What Clients Say<br><span class="gradient-text">About Working With Me</span></h2>
         <div class="upwork-badge-row">
-          <span class="upwork-inline-logo">
-            <svg viewBox="0 0 90 24" width="90" height="24" xmlns="http://www.w3.org/2000/svg" aria-label="Upwork">
-              <path d="M61.37 6.76c-3.32 0-5.9 2.15-6.93 5.68-1.59-2.39-2.8-5.26-3.5-7.67H47.1v9.26c0 1.83-1.49 3.32-3.32 3.32s-3.32-1.49-3.32-3.32V4.77h-3.74v9.26c0 3.79 3.09 6.91 6.88 6.91s6.88-3.12 6.88-6.91v-1.55c.69 1.44 1.54 2.9 2.57 4.19l-2.18 10.24h3.64l1.58-7.43c1.38.88 2.97 1.44 4.8 1.44 3.91 0 7.08-3.19 7.08-7.09s-3.17-7.07-7.1-7.07zm0 10.6c-1.17 0-2.28-.43-3.22-1.16l.3-1.4.01-.05c.27-1.49 1.1-3.98 2.91-3.98 1.94 0 3.52 1.58 3.52 3.52-.01 1.95-1.59 3.07-3.52 3.07zM18.3 4.77v9.26c0 1.83-1.49 3.32-3.32 3.32s-3.32-1.49-3.32-3.32V4.77H7.92v9.26c0 3.79 3.09 6.91 6.88 6.91.98 0 1.93-.22 2.8-.6v.48h3.74V4.77H18.3zM31.14 6.76c-1.77 0-3.4.57-4.73 1.52V4.77H22.7v24h3.71v-8.52c1.33.95 2.96 1.52 4.73 1.52 4.37 0 7.92-3.55 7.92-7.97s-3.55-8.04-7.92-8.04zm0 12.37c-2.36 0-4.27-1.97-4.27-4.4s1.91-4.4 4.27-4.4 4.27 1.97 4.27 4.4-1.91 4.4-4.27 4.4zM79.74 6.76c-4.37 0-7.92 3.6-7.92 8.04s3.55 7.97 7.92 7.97c2.53 0 4.78-1.19 6.24-3.04l-2.89-2.06c-.78 1.07-2.01 1.77-3.35 1.77-1.97 0-3.64-1.31-4.15-3.13h11.21c.06-.49.1-.99.1-1.51 0-4.44-3.55-8.04-7.16-8.04zm-3.98 6.35c.55-1.73 2.12-2.98 3.98-2.98s3.41 1.25 3.93 2.98h-7.91z" fill="#ffffff" opacity="0.85"/>
-            </svg>
+          <span class="upwork-pill">
+            <svg viewBox="0 0 24 24" width="18" height="18" xmlns="http://www.w3.org/2000/svg"><path d="M18.561 13.158c-1.102 0-2.135-.467-3.074-1.227l.228-1.076.008-.042c.207-1.143.849-3.06 2.839-3.06 1.492 0 2.703 1.212 2.703 2.703-.001 1.489-1.212 2.702-2.704 2.702zm0-8.14c-2.539 0-4.51 1.649-5.31 4.366-1.22-1.834-2.148-4.036-2.687-5.892H7.828v7.112c-.002 1.406-1.141 2.546-2.547 2.546-1.405 0-2.543-1.14-2.543-2.546V3.492H0v7.112c0 2.914 2.37 5.303 5.281 5.303 2.913 0 5.283-2.389 5.283-5.303v-1.19c.529 1.107 1.182 2.229 1.974 3.221l-1.673 7.873h2.797l1.213-5.71c1.063.679 2.285 1.109 3.686 1.109 3 0 5.439-2.452 5.439-5.45 0-3-2.439-5.439-5.439-5.439z" fill="#14A800"/></svg>
+            <span>Upwork Top Rated</span>
           </span>
-          <span class="jss-badge"><i class="fas fa-star"></i> 100% Job Success Score · Top Rated</span>
+          <span class="jss-badge"><i class="fas fa-star"></i> 100% Job Success Score</span>
         </div>
       </div>
-      <div class="testimonials-grid">
+      <div class="testimonials-grid testimonials-grid-3">
 
         <div class="testimonial-card animate-on-scroll featured-testimonial">
           <div class="testimonial-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-          <blockquote>"Abhishek scaled our paid media from a modest budget to $3.1M annually while maintaining a consistent 300% ROAS. His data-driven approach and transparent reporting made all the difference. He doesn't just manage ads — he builds systems."</blockquote>
+          <blockquote>"Abhishek scaled our paid media to $3.1M annually while maintaining a consistent 300% ROAS. He doesn't just manage ads — he builds systems."</blockquote>
           <div class="testimonial-author">
             <div class="author-avatar"><i class="fas fa-user"></i></div>
             <div class="author-info">
@@ -581,7 +405,7 @@ app.get('/', (c) => {
 
         <div class="testimonial-card animate-on-scroll">
           <div class="testimonial-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-          <blockquote>"In just 12 months, Abhishek helped us reach £7.5M+ in revenue with an 11% year-over-year improvement. His expertise in Performance Max and Shopping campaigns is unmatched. Truly a strategic partner, not just an ads manager."</blockquote>
+          <blockquote>"In 12 months, Abhishek helped us reach £7.5M+ in revenue with 11% YoY improvement. Truly a strategic partner, not just an ads manager."</blockquote>
           <div class="testimonial-author">
             <div class="author-avatar"><i class="fas fa-user"></i></div>
             <div class="author-info">
@@ -594,51 +418,12 @@ app.get('/', (c) => {
 
         <div class="testimonial-card animate-on-scroll">
           <div class="testimonial-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-          <blockquote>"Really great working with Abhishek. He knows his craft, communication is super. Serious improvement in many stores' results. He took the time to understand our business goals before touching a single setting. Highly recommended!"</blockquote>
-          <div class="testimonial-author">
-            <div class="author-avatar"><i class="fas fa-user"></i></div>
-            <div class="author-info">
-              <strong>eCommerce Store Owner</strong>
-              <span>eCommerce &amp; Dropshipping</span>
-              <div class="platform-tag upwork"><i class="fas fa-briefcase"></i> Upwork Client</div>
-            </div>
-          </div>
-        </div>
-
-        <div class="testimonial-card animate-on-scroll">
-          <div class="testimonial-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-          <blockquote>"The tracking setup Abhishek built for us completely transformed how we make decisions. For the first time, we had clean, reliable data flowing from every touchpoint. Our ROAS improved 40% just from fixing attribution."</blockquote>
-          <div class="testimonial-author">
-            <div class="author-avatar"><i class="fas fa-user"></i></div>
-            <div class="author-info">
-              <strong>Head of Digital</strong>
-              <span>US-Based SaaS Brand</span>
-              <div class="platform-tag upwork"><i class="fas fa-briefcase"></i> Upwork Client</div>
-            </div>
-          </div>
-        </div>
-
-        <div class="testimonial-card animate-on-scroll">
-          <div class="testimonial-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-          <blockquote>"We were burning budget on a poorly structured PMax campaign. Abhishek audited, rebuilt, and within 60 days we saw our cost-per-acquisition drop by 45% while revenue held steady. Exactly what we needed."</blockquote>
+          <blockquote>"Abhishek audited, rebuilt our PMax — within 60 days CPA dropped 45% while revenue held steady. Our lead volume doubled in 3 months with 30% lower CPL."</blockquote>
           <div class="testimonial-author">
             <div class="author-avatar"><i class="fas fa-user"></i></div>
             <div class="author-info">
               <strong>Marketing Manager</strong>
-              <span>Fashion Brand, Europe</span>
-              <div class="platform-tag direct"><i class="fas fa-handshake"></i> Direct Client</div>
-            </div>
-          </div>
-        </div>
-
-        <div class="testimonial-card animate-on-scroll">
-          <div class="testimonial-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-          <blockquote>"Professional, proactive, and results-focused. Abhishek doesn't just send reports — he tells you what they mean and what to do next. Our lead volume doubled in 3 months with a 30% lower CPL. He exceeded every expectation."</blockquote>
-          <div class="testimonial-author">
-            <div class="author-avatar"><i class="fas fa-user"></i></div>
-            <div class="author-info">
-              <strong>Business Owner</strong>
-              <span>Home Services, USA</span>
+              <span>Fashion Brand, Europe &amp; Home Services, USA</span>
               <div class="platform-tag upwork"><i class="fas fa-briefcase"></i> Upwork Client</div>
             </div>
           </div>

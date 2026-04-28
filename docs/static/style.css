@@ -560,7 +560,7 @@ h1, h2, h3, h4 {
 
 /* ---- STATS SECTION ---- */
 .stats-section {
-  padding: 100px 0;
+  padding: 64px 0;
   background: var(--dark-2);
   position: relative;
   overflow: hidden;
@@ -914,7 +914,7 @@ h1, h2, h3, h4 {
 
 /* ---- SERVICES SECTION ---- */
 .services-section {
-  padding: 100px 0;
+  padding: 64px 0;
   background: var(--dark-2);
 }
 
@@ -924,11 +924,32 @@ h1, h2, h3, h4 {
   gap: 24px;
 }
 
+.services-grid-3 {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.service-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 14px 0 20px;
+}
+
+.service-chips span {
+  font-size: 0.74rem;
+  padding: 4px 10px;
+  border-radius: 100px;
+  background: rgba(99,102,241,0.1);
+  border: 1px solid rgba(99,102,241,0.25);
+  color: var(--primary-light);
+  font-weight: 500;
+}
+
 .service-card {
   background: var(--dark-card);
   border: 1px solid var(--border);
   border-radius: var(--radius);
-  padding: 36px 28px;
+  padding: 28px 24px;
   transition: var(--transition);
   position: relative;
   overflow: hidden;
@@ -1055,7 +1076,7 @@ h1, h2, h3, h4 {
 
 /* ---- APPROACH SECTION ---- */
 .approach-section {
-  padding: 100px 0;
+  padding: 64px 0;
   background: var(--dark);
 }
 
@@ -1132,7 +1153,7 @@ h1, h2, h3, h4 {
 
 /* ---- CASE STUDIES ---- */
 .case-studies-section {
-  padding: 100px 0;
+  padding: 64px 0;
   background: var(--dark-2);
 }
 
@@ -1146,7 +1167,7 @@ h1, h2, h3, h4 {
   background: var(--dark-card);
   border: 1px solid var(--border);
   border-radius: var(--radius);
-  padding: 32px;
+  padding: 24px;
   transition: var(--transition);
   position: relative;
   overflow: hidden;
@@ -1289,8 +1310,12 @@ h1, h2, h3, h4 {
 
 /* ---- TESTIMONIALS ---- */
 .testimonials-section {
-  padding: 70px 0;
+  padding: 64px 0;
   background: var(--dark);
+}
+
+.testimonials-grid-3 {
+  grid-template-columns: repeat(3, 1fr) !important;
 }
 
 .upwork-badge-row {
@@ -1302,19 +1327,21 @@ h1, h2, h3, h4 {
   flex-wrap: wrap;
 }
 
-.upwork-inline-logo {
+.upwork-pill {
   display: inline-flex;
   align-items: center;
+  gap: 7px;
   background: rgba(20,168,0,0.12);
-  border: 1px solid rgba(20,168,0,0.25);
+  border: 1px solid rgba(20,168,0,0.3);
+  color: #4ade80;
+  font-size: 0.82rem;
+  font-weight: 700;
+  padding: 6px 14px;
   border-radius: 100px;
-  padding: 6px 16px;
-  line-height: 1;
+  letter-spacing: 0.01em;
 }
 
-.upwork-inline-logo svg {
-  display: block;
-}
+.upwork-pill svg { display: block; flex-shrink: 0; }
 
 .jss-badge {
   display: inline-flex;
@@ -1339,7 +1366,7 @@ h1, h2, h3, h4 {
   background: var(--dark-card);
   border: 1px solid var(--border);
   border-radius: var(--radius);
-  padding: 32px;
+  padding: 24px;
   transition: var(--transition);
   position: relative;
   overflow: hidden;
@@ -1435,7 +1462,7 @@ h1, h2, h3, h4 {
 
 /* ---- CREDENTIALS ---- */
 .credentials-section {
-  padding: 70px 0;
+  padding: 60px 0;
   background: var(--dark-2);
 }
 
@@ -2128,13 +2155,23 @@ h1, h2, h3, h4 {
 
   /* Tighter section padding on mobile */
   .stats-section, .services-section, .case-studies-section,
-  .testimonials-section, .credentials-section, .contact-section { padding: 52px 0; }
-  .about-section { padding: 52px 0; }
-  .section-header { margin-bottom: 32px; }
-  .section-title { font-size: 1.9rem; }
+  .testimonials-section, .credentials-section, .contact-section { padding: 44px 0; }
+  .about-section { padding: 44px 0; }
+  .section-header { margin-bottom: 28px; }
+  .section-title { font-size: 1.75rem; }
 
-  /* Collapse footer on mobile */
+  /* Services: 1 col on mobile */
+  .services-grid-3 { grid-template-columns: 1fr !important; }
+  /* Testimonials: 1 col on mobile */
+  .testimonials-grid-3 { grid-template-columns: 1fr !important; }
+
+  /* Collapse footer links on mobile */
   .footer-links { display: none; }
+
+  /* Tighter card padding */
+  .service-card { padding: 22px 18px; }
+  .case-study-card { padding: 20px; }
+  .testimonial-card { padding: 20px; }
 
   .about-composition { flex-direction: column; align-items: center; gap: 32px; }
   .about-badge-grid { padding-top: 0; flex-direction: row; flex-wrap: wrap; justify-content: center; }
