@@ -89,7 +89,7 @@ h1, h2, h3, h4 {
 
 .section-header {
   text-align: center;
-  margin-bottom: 64px;
+  margin-bottom: 40px;
 }
 
 .section-title {
@@ -99,7 +99,7 @@ h1, h2, h3, h4 {
 
 .section-subtitle {
   color: var(--text-muted);
-  font-size: 1.1rem;
+  font-size: 0.95rem;
   max-width: 600px;
   margin: 0 auto;
 }
@@ -1163,6 +1163,12 @@ h1, h2, h3, h4 {
   gap: 24px;
 }
 
+.case-studies-grid-2 {
+  grid-template-columns: repeat(2, 1fr) !important;
+  max-width: 860px;
+  margin: 0 auto;
+}
+
 .case-study-card {
   background: var(--dark-card);
   border: 1px solid var(--border);
@@ -1704,7 +1710,7 @@ h1, h2, h3, h4 {
 
 /* ---- CONTACT SECTION ---- */
 .contact-section {
-  padding: 100px 0;
+  padding: 64px 0;
   background: var(--dark);
   position: relative;
   overflow: hidden;
@@ -1718,6 +1724,46 @@ h1, h2, h3, h4 {
   right: 0;
   height: 1px;
   background: linear-gradient(90deg, transparent, var(--primary), transparent);
+}
+
+/* contact-compact = the actual layout wrapper used in HTML */
+.contact-compact {
+  display: grid;
+  grid-template-columns: 1fr 1.6fr;
+  gap: 48px;
+  align-items: flex-start;
+}
+
+.contact-heading {
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  font-weight: 800;
+  line-height: 1.2;
+  margin-bottom: 8px;
+}
+
+.contact-sub {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  margin-bottom: 20px;
+}
+
+.contact-trust-row {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 24px;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.contact-trust-row i {
+  color: var(--primary-light);
+  margin-right: 6px;
+}
+
+.contact-social-row {
+  display: flex;
+  gap: 12px;
 }
 
 .contact-grid {
@@ -1827,13 +1873,13 @@ h1, h2, h3, h4 {
   background: var(--dark-2);
   border: 1px solid var(--border);
   border-radius: var(--radius);
-  padding: 40px;
+  padding: 28px;
 }
 
 .contact-form {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 14px;
 }
 
 .form-row {
@@ -1887,7 +1933,7 @@ h1, h2, h3, h4 {
   box-shadow: 0 0 0 3px rgba(99,102,241,0.1);
 }
 
-.form-group textarea { resize: vertical; min-height: 120px; }
+.form-group textarea { resize: vertical; min-height: 80px; }
 
 .form-note {
   font-size: 0.8rem;
@@ -2104,6 +2150,7 @@ h1, h2, h3, h4 {
   .stats-grid { grid-template-columns: repeat(3, 1fr); }
   .services-grid { grid-template-columns: repeat(2, 1fr); }
   .case-studies-grid { grid-template-columns: repeat(2, 1fr); }
+  .case-studies-grid-2 { grid-template-columns: repeat(2, 1fr) !important; }
   .testimonials-grid { grid-template-columns: repeat(2, 1fr); }
   .credentials-grid { grid-template-columns: 1fr; }
   .footer-grid { grid-template-columns: 1fr 1fr; }
@@ -2143,8 +2190,11 @@ h1, h2, h3, h4 {
   .stats-grid { grid-template-columns: repeat(2, 1fr); }
   .services-grid { grid-template-columns: 1fr; }
   .case-studies-grid { grid-template-columns: 1fr; }
+  .case-studies-grid-2 { grid-template-columns: 1fr !important; max-width: 100%; }
   .testimonials-grid { grid-template-columns: 1fr; }
   .contact-grid { grid-template-columns: 1fr; }
+  .contact-compact { grid-template-columns: 1fr; gap: 28px; }
+  .contact-social-row { flex-direction: row; }
   .footer-grid { grid-template-columns: 1fr; }
 
   .form-row { grid-template-columns: 1fr; }
@@ -2183,7 +2233,8 @@ h1, h2, h3, h4 {
   .approach-step { max-width: 100%; padding: 0; }
 
   .footer-bottom { flex-direction: column; text-align: center; }
-  .contact-form-wrap { padding: 24px; }
+  .contact-form-wrap { padding: 20px; }
+  .contact-form { gap: 12px; }
 
   .hero-trust { gap: 16px; }
   .social-links { flex-direction: column; }
@@ -2197,8 +2248,10 @@ h1, h2, h3, h4 {
   .hero-title { font-size: 1.9rem; }
   .section-title { font-size: 1.65rem; }
   .testimonial-card { padding: 22px; }
-  .contact-form-wrap { padding: 20px; }
-  .case-study-card { padding: 22px; }
+  .contact-form-wrap { padding: 16px; }
+  .contact-form { gap: 10px; }
+  .form-group textarea { min-height: 64px; }
+  .case-study-card { padding: 18px; }
   .stat-card { padding: 24px 16px; }
 }
 
@@ -2241,11 +2294,14 @@ h1, h2, h3, h4 {
   font-weight: 700;
   padding: 13px 20px;
   border-radius: 50px;
+  border: none;
+  cursor: pointer;
   text-decoration: none;
   box-shadow: 0 8px 28px rgba(99,102,241,0.45);
   letter-spacing: 0.01em;
   white-space: nowrap;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
+  font-family: 'Inter', sans-serif;
 }
 
 .sticky-cta-btn:hover {
