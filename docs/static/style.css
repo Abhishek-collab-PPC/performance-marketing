@@ -1170,7 +1170,7 @@ h1, h2, h3, h4 {
 }
 
 .case-studies-grid-3 {
-  grid-template-columns: repeat(3, 1fr) !important;
+  grid-template-columns: repeat(3, 1fr);
 }
 
 .case-study-card {
@@ -2154,7 +2154,8 @@ h1, h2, h3, h4 {
   .stats-grid { grid-template-columns: repeat(3, 1fr); }
   .services-grid { grid-template-columns: repeat(2, 1fr); }
   .case-studies-grid { grid-template-columns: repeat(2, 1fr); }
-  .case-studies-grid-2 { grid-template-columns: repeat(2, 1fr) !important; }
+  .case-studies-grid-2 { grid-template-columns: repeat(2, 1fr); }
+  .case-studies-grid-3 { grid-template-columns: repeat(2, 1fr); }
   .testimonials-grid { grid-template-columns: repeat(2, 1fr); }
   .credentials-grid { grid-template-columns: 1fr; }
   .footer-grid { grid-template-columns: 1fr 1fr; }
@@ -2194,7 +2195,8 @@ h1, h2, h3, h4 {
   .stats-grid { grid-template-columns: repeat(2, 1fr); }
   .services-grid { grid-template-columns: 1fr; }
   .case-studies-grid { grid-template-columns: 1fr; }
-  .case-studies-grid-2 { grid-template-columns: 1fr !important; max-width: 100%; }
+  .case-studies-grid-2 { grid-template-columns: 1fr; max-width: 100%; }
+  .case-studies-grid-3 { grid-template-columns: 1fr; }
   .testimonials-grid { grid-template-columns: 1fr; }
   .contact-grid { grid-template-columns: 1fr; }
   .contact-compact { grid-template-columns: 1fr; gap: 28px; }
