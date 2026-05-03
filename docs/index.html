@@ -631,7 +631,51 @@
       <span>Book a Free Call</span>
     </button>
   </div>
-
+<script>
+  if (window.location.search.includes('submitted=1')) {
+    document.body.innerHTML = `
+      <div style="
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background: #0a0a1a;
+        font-family: 'Inter', sans-serif;
+        text-align: center;
+        padding: 40px 20px;
+      ">
+        <div style="
+          background: rgba(255,255,255,0.05);
+          border: 1px solid rgba(255,255,255,0.1);
+          border-radius: 24px;
+          padding: 60px 48px;
+          max-width: 520px;
+          width: 100%;
+        ">
+          <div style="font-size: 56px; margin-bottom: 24px;">✅</div>
+          <h1 style="color: #ffffff; font-size: 32px; font-weight: 700; margin: 0 0 16px;">
+            Thank You!
+          </h1>
+          <p style="color: rgba(255,255,255,0.7); font-size: 18px; line-height: 1.6; margin: 0 0 32px;">
+            Your message has been received.<br>
+            I'll review your details and get back to you <strong style="color:#fff;">within 24 hours</strong> with a personalised strategy overview.
+          </p>
+          <a href="/performance-marketing/" style="
+            display: inline-block;
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            color: white;
+            padding: 14px 32px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 16px;
+          ">← Back to Home</a>
+        </div>
+      </div>
+    `;
+  }
+</script>
   <script src="/performance-marketing/static/app.js"></script>
 </body>
 </html>
