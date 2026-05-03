@@ -1169,6 +1169,10 @@ h1, h2, h3, h4 {
   margin: 0 auto;
 }
 
+.case-studies-grid-3 {
+  grid-template-columns: repeat(3, 1fr) !important;
+}
+
 .case-study-card {
   background: var(--dark-card);
   border: 1px solid var(--border);

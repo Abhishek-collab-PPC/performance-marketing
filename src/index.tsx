@@ -258,7 +258,7 @@ app.get('/', (c) => {
         <h2 class="section-title">Real Campaigns.<br><span class="gradient-text">Real Results.</span></h2>
         <p class="section-subtitle">A selection of performance marketing wins across eCommerce, fashion, and lead generation</p>
       </div>
-      <div class="case-studies-grid case-studies-grid-2">
+      <div class="case-studies-grid case-studies-grid-3">
 
         <div class="case-study-card animate-on-scroll featured-case">
           <div class="case-study-header">
@@ -313,6 +313,33 @@ app.get('/', (c) => {
             <span>Meta Ads</span><span>Google Ads</span><span>Fashion</span>
           </div>
         </div>
+
+        <div class="case-study-card animate-on-scroll">
+          <div class="case-study-header">
+            <div class="case-tag ecommerce">eCommerce</div>
+            <div class="case-location"><i class="fas fa-map-marker-alt"></i> Global</div>
+          </div>
+          <div class="case-study-icon"><i class="fas fa-shopping-cart"></i></div>
+          <h3 class="case-study-title">eCommerce &amp; Dropshipping Google Ads</h3>
+          <p class="case-study-desc">Managed Google Ads for multiple eCommerce and dropshipping stores, delivering serious improvement in results with clear communication and measurable ROAS gains.</p>
+          <div class="case-metrics">
+            <div class="metric-item">
+              <span class="metric-value highlight">5.0★</span>
+              <span class="metric-label">Upwork Rating</span>
+            </div>
+            <div class="metric-item">
+              <span class="metric-value">$1,000</span>
+              <span class="metric-label">Fixed Price</span>
+            </div>
+            <div class="metric-item">
+              <span class="metric-value">2025</span>
+              <span class="metric-label">Completed</span>
+            </div>
+          </div>
+          <div class="case-tags">
+            <span>Google Ads</span><span>eCommerce</span><span>Dropshipping</span>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -348,13 +375,13 @@ app.get('/', (c) => {
 
         <div class="testimonial-card animate-on-scroll">
           <div class="testimonial-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-          <blockquote>"In 12 months, Abhishek helped us reach £7.5M+ in revenue with 11% YoY improvement. Truly a strategic partner, not just an ads manager."</blockquote>
+          <blockquote>"Really great working with Abhishek. He knows his craft, communication is super. Serious improvement in many stores' results. Highly recommended."</blockquote>
           <div class="testimonial-author">
             <div class="author-avatar"><i class="fas fa-user"></i></div>
             <div class="author-info">
-              <strong>Founder &amp; CEO</strong>
-              <span>UK Lego Business</span>
-              <div class="platform-tag direct"><i class="fas fa-handshake"></i> Direct Client</div>
+              <strong>eCommerce &amp; Dropshipping Store Owner</strong>
+              <span>Google Ads — Multi-Store Campaign · Apr–May 2025</span>
+              <div class="platform-tag upwork"><i class="fas fa-briefcase"></i> Upwork Client · 5.0★</div>
             </div>
           </div>
         </div>
