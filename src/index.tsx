@@ -316,28 +316,28 @@ app.get('/', (c) => {
 
         <div class="case-study-card animate-on-scroll">
           <div class="case-study-header">
-            <div class="case-tag ecommerce">eCommerce</div>
-            <div class="case-location"><i class="fas fa-map-marker-alt"></i> Global</div>
+            <div class="case-tag leadgen">Lead Gen</div>
+            <div class="case-location"><i class="fas fa-map-marker-alt"></i> USA</div>
           </div>
-          <div class="case-study-icon"><i class="fas fa-shopping-cart"></i></div>
-          <h3 class="case-study-title">eCommerce &amp; Dropshipping Google Ads</h3>
-          <p class="case-study-desc">Managed Google Ads for multiple eCommerce and dropshipping stores, delivering serious improvement in results with clear communication and measurable ROAS gains.</p>
+          <div class="case-study-icon"><i class="fas fa-wrench"></i></div>
+          <h3 class="case-study-title">Plumbing Business — Digital Marketing Lead</h3>
+          <p class="case-study-desc">Managed full digital marketing for a plumbing business across 50+ US cities. Increased overall ROI by 30%+ and reduced CPL by 37% for new customers via Google Ads &amp; CRO.</p>
           <div class="case-metrics">
             <div class="metric-item">
-              <span class="metric-value highlight">5.0★</span>
-              <span class="metric-label">Upwork Rating</span>
+              <span class="metric-value highlight">+30%</span>
+              <span class="metric-label">ROI Increase</span>
             </div>
             <div class="metric-item">
-              <span class="metric-value">$1,000</span>
-              <span class="metric-label">Fixed Price</span>
+              <span class="metric-value">-37%</span>
+              <span class="metric-label">CPL Reduction</span>
             </div>
             <div class="metric-item">
-              <span class="metric-value">2025</span>
-              <span class="metric-label">Completed</span>
+              <span class="metric-value">50+</span>
+              <span class="metric-label">Cities (USA)</span>
             </div>
           </div>
           <div class="case-tags">
-            <span>Google Ads</span><span>eCommerce</span><span>Dropshipping</span>
+            <span>Google Ads</span><span>CRO</span><span>Lead Generation</span>
           </div>
         </div>
       </div>
@@ -379,8 +379,8 @@ app.get('/', (c) => {
           <div class="testimonial-author">
             <div class="author-avatar"><i class="fas fa-user"></i></div>
             <div class="author-info">
-              <strong>eCommerce &amp; Dropshipping Store Owner</strong>
-              <span>Google Ads — Multi-Store Campaign · Apr–May 2025</span>
+              <strong>Multiple eCommerce Store Owner</strong>
+              <span>Google Ads — Dropshipping Stores · Apr–May 2025</span>
               <div class="platform-tag upwork"><i class="fas fa-briefcase"></i> Upwork Client · 5.0★</div>
             </div>
           </div>

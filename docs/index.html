@@ -1,17 +1,4 @@
-import { Hono } from 'hono'
-import { serveStatic } from 'hono/cloudflare-workers'
-
-const app = new Hono()
-
-// Serve static files
-app.use('/static/*', serveStatic({ root: './public' }))
-
-// Serve favicon
-app.get('/favicon.ico', serveStatic({ root: './public', path: '/static/favicon.svg' }))
-
-// Main page
-app.get('/', (c) => {
-  return c.html(`<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -22,8 +9,8 @@ app.get('/', (c) => {
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.0/css/all.min.css">
-  <link rel="icon" type="image/svg+xml" href="/performance-marketing/static/favicon.svg">
-  <link rel="stylesheet" href="/performance-marketing/static/style.css">
+  <link rel="icon" type="image/svg+xml" href="/static/favicon.svg">
+  <link rel="stylesheet" href="/static/style.css">
 </head>
 <body>
 
@@ -31,7 +18,7 @@ app.get('/', (c) => {
   <nav class="navbar" id="navbar">
     <div class="nav-container">
       <a href="#" class="nav-logo">
-        <img src="/performance-marketing/static/logo.png" alt="Rav Growth Paid Media Logo" class="nav-logo-img">
+        <img src="/static/logo.png" alt="Rav Growth Paid Media Logo" class="nav-logo-img">
       </a>
       <ul class="nav-links" id="navLinks">
         <li><a href="#about" class="nav-link">About</a></li>
@@ -164,7 +151,7 @@ app.get('/', (c) => {
             <div class="about-photo-wrap">
               <div class="about-halo-outer"></div>
               <div class="about-halo-inner"></div>
-              <img profile.jpg" alt="Abhishek – Paid Media Strategist" class="about-profile-photo">
+              <img src="/static/profile.jpg" alt="Abhishek – Paid Media Strategist" class="about-profile-photo">
             </div>
             <!-- Right: 2x2 badge grid + experience badge overlapping top-right -->
             <div class="about-badges-area">
@@ -316,28 +303,28 @@ app.get('/', (c) => {
 
         <div class="case-study-card animate-on-scroll">
           <div class="case-study-header">
-            <div class="case-tag ecommerce">eCommerce</div>
-            <div class="case-location"><i class="fas fa-map-marker-alt"></i> Global</div>
+            <div class="case-tag leadgen">Lead Gen</div>
+            <div class="case-location"><i class="fas fa-map-marker-alt"></i> USA</div>
           </div>
-          <div class="case-study-icon"><i class="fas fa-shopping-cart"></i></div>
-          <h3 class="case-study-title">eCommerce &amp; Dropshipping Google Ads</h3>
-          <p class="case-study-desc">Managed Google Ads for multiple eCommerce and dropshipping stores, delivering serious improvement in results with clear communication and measurable ROAS gains.</p>
+          <div class="case-study-icon"><i class="fas fa-wrench"></i></div>
+          <h3 class="case-study-title">Plumbing Business — Digital Marketing Lead</h3>
+          <p class="case-study-desc">Managed full digital marketing for a plumbing business across 50+ US cities. Increased overall ROI by 30%+ and reduced CPL by 37% for new customers via Google Ads &amp; CRO.</p>
           <div class="case-metrics">
             <div class="metric-item">
-              <span class="metric-value highlight">5.0★</span>
-              <span class="metric-label">Upwork Rating</span>
+              <span class="metric-value highlight">+30%</span>
+              <span class="metric-label">ROI Increase</span>
             </div>
             <div class="metric-item">
-              <span class="metric-value">$1,000</span>
-              <span class="metric-label">Fixed Price</span>
+              <span class="metric-value">-37%</span>
+              <span class="metric-label">CPL Reduction</span>
             </div>
             <div class="metric-item">
-              <span class="metric-value">2025</span>
-              <span class="metric-label">Completed</span>
+              <span class="metric-value">50+</span>
+              <span class="metric-label">Cities (USA)</span>
             </div>
           </div>
           <div class="case-tags">
-            <span>Google Ads</span><span>eCommerce</span><span>Dropshipping</span>
+            <span>Google Ads</span><span>CRO</span><span>Lead Generation</span>
           </div>
         </div>
       </div>
@@ -379,8 +366,8 @@ app.get('/', (c) => {
           <div class="testimonial-author">
             <div class="author-avatar"><i class="fas fa-user"></i></div>
             <div class="author-info">
-              <strong>eCommerce &amp; Dropshipping Store Owner</strong>
-              <span>Google Ads — Multi-Store Campaign · Apr–May 2025</span>
+              <strong>Multiple eCommerce Store Owner</strong>
+              <span>Google Ads — Dropshipping Stores · Apr–May 2025</span>
               <div class="platform-tag upwork"><i class="fas fa-briefcase"></i> Upwork Client · 5.0★</div>
             </div>
           </div>
@@ -583,7 +570,7 @@ app.get('/', (c) => {
       <div class="footer-grid">
         <div class="footer-brand">
           <a href="#" class="nav-logo">
-            <img src="/performance-marketing/static/logo.png" alt="Rav Growth Paid Media" class="footer-logo-img">
+            <img src="/static/logo.png" alt="Rav Growth Paid Media" class="footer-logo-img">
           </a>
           <p>Paid Media Strategist for eCommerce &amp; Lead Gen. Building performance systems that scale profitably.</p>
           <div class="footer-social">
@@ -648,86 +635,6 @@ app.get('/', (c) => {
     </button>
   </div>
 
-  <script src="/performance-marketing/static/app.js"></script>
+  <script src="/static/app.js"></script>
 </body>
-</html>`)
-})
-
-// Contact form API endpoint — forwards to PPCbyAbhishek@gmail.com via FormSubmit.co
-app.post('/api/contact', async (c) => {
-  try {
-    const body = await c.req.json()
-    const { name, email, business, budget, service, message } = body
-
-    if (!name || !email || !message) {
-      return c.json({ success: false, error: 'Please fill in all required fields.' }, 400)
-    }
-
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
-    if (!emailRegex.test(email)) {
-      return c.json({ success: false, error: 'Please enter a valid email address.' }, 400)
-    }
-
-    // Build a readable email body
-    const emailBody = [
-      `New lead from your Performance Marketing website:`,
-      ``,
-      `Name: ${name}`,
-      `Email: ${email}`,
-      `Business/Website: ${business || 'Not provided'}`,
-      `Monthly Budget: ${budget || 'Not specified'}`,
-      `Service Needed: ${service || 'Not specified'}`,
-      ``,
-      `Message:`,
-      message,
-    ].join('\n')
-
-    // Send via FormSubmit.co — free, no API key needed
-    // First submission will send a confirmation email to PPCbyAbhishek@gmail.com to activate
-    const formSubmitResponse = await fetch('https://formsubmit.co/ajax/PPCbyAbhishek@gmail.com', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        Accept: 'application/json',
-      },
-      body: JSON.stringify({
-        _subject: `🎯 New Lead: ${name} — Performance Marketing Site`,
-        _replyto: email,
-        _template: 'table',
-        _captcha: 'false',
-        name,
-        email,
-        'Business / Website': business || 'Not provided',
-        'Monthly Budget': budget || 'Not specified',
-        'Service Needed': service || 'Not specified',
-        message,
-      })
-    })
-
-    let fsResult: any = {}
-    try {
-      fsResult = await formSubmitResponse.json()
-    } catch (_) {}
-
-    // FormSubmit returns { success: "true" } (string, not boolean) on success
-    if (formSubmitResponse.ok && (fsResult.success === 'true' || fsResult.success === true)) {
-      return c.json({
-        success: true,
-        message: 'Thank you! Your message has been received. I will respond within 24 hours.'
-      })
-    } else {
-      // FormSubmit may fail on first use (requires email activation).
-      // Log the error server-side but still show a user-friendly message.
-      console.error('FormSubmit error:', formSubmitResponse.status, JSON.stringify(fsResult))
-      return c.json({
-        success: false,
-        error: 'Email service not yet activated. Please email PPCbyAbhishek@gmail.com directly, or try again after activation.'
-      }, 503)
-    }
-  } catch (e) {
-    console.error('Contact form error:', e)
-    return c.json({ success: false, error: 'Something went wrong. Please try again.' }, 500)
-  }
-})
-
-export default app
+</html>
