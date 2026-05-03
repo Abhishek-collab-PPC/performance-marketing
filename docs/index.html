@@ -1,4 +1,17 @@
-<!DOCTYPE html>
+import { Hono } from 'hono'
+import { serveStatic } from 'hono/cloudflare-workers'
+
+const app = new Hono()
+
+// Serve static files
+app.use('/static/*', serveStatic({ root: './public' }))
+
+// Serve favicon
+app.get('/favicon.ico', serveStatic({ root: './public', path: '/static/favicon.svg' }))
+
+// Main page
+app.get('/', (c) => {
+  return c.html(`<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -151,7 +164,7 @@
             <div class="about-photo-wrap">
               <div class="about-halo-outer"></div>
               <div class="about-halo-inner"></div>
-              <img src="/performance-marketing/static/profile.jpg" alt="Abhishek – Paid Media Strategist" class="about-profile-photo">
+              <img profile.jpg" alt="Abhishek – Paid Media Strategist" class="about-profile-photo">
             </div>
             <!-- Right: 2x2 badge grid + experience badge overlapping top-right -->
             <div class="about-badges-area">
@@ -637,4 +650,84 @@
 
   <script src="/performance-marketing/static/app.js"></script>
 </body>
-</html>
+</html>`)
+})
+
+// Contact form API endpoint — forwards to PPCbyAbhishek@gmail.com via FormSubmit.co
+app.post('/api/contact', async (c) => {
+  try {
+    const body = await c.req.json()
+    const { name, email, business, budget, service, message } = body
+
+    if (!name || !email || !message) {
+      return c.json({ success: false, error: 'Please fill in all required fields.' }, 400)
+    }
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+    if (!emailRegex.test(email)) {
+      return c.json({ success: false, error: 'Please enter a valid email address.' }, 400)
+    }
+
+    // Build a readable email body
+    const emailBody = [
+      `New lead from your Performance Marketing website:`,
+      ``,
+      `Name: ${name}`,
+      `Email: ${email}`,
+      `Business/Website: ${business || 'Not provided'}`,
+      `Monthly Budget: ${budget || 'Not specified'}`,
+      `Service Needed: ${service || 'Not specified'}`,
+      ``,
+      `Message:`,
+      message,
+    ].join('\n')
+
+    // Send via FormSubmit.co — free, no API key needed
+    // First submission will send a confirmation email to PPCbyAbhishek@gmail.com to activate
+    const formSubmitResponse = await fetch('https://formsubmit.co/ajax/PPCbyAbhishek@gmail.com', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
+      },
+      body: JSON.stringify({
+        _subject: `🎯 New Lead: ${name} — Performance Marketing Site`,
+        _replyto: email,
+        _template: 'table',
+        _captcha: 'false',
+        name,
+        email,
+        'Business / Website': business || 'Not provided',
+        'Monthly Budget': budget || 'Not specified',
+        'Service Needed': service || 'Not specified',
+        message,
+      })
+    })
+
+    let fsResult: any = {}
+    try {
+      fsResult = await formSubmitResponse.json()
+    } catch (_) {}
+
+    // FormSubmit returns { success: "true" } (string, not boolean) on success
+    if (formSubmitResponse.ok && (fsResult.success === 'true' || fsResult.success === true)) {
+      return c.json({
+        success: true,
+        message: 'Thank you! Your message has been received. I will respond within 24 hours.'
+      })
+    } else {
+      // FormSubmit may fail on first use (requires email activation).
+      // Log the error server-side but still show a user-friendly message.
+      console.error('FormSubmit error:', formSubmitResponse.status, JSON.stringify(fsResult))
+      return c.json({
+        success: false,
+        error: 'Email service not yet activated. Please email PPCbyAbhishek@gmail.com directly, or try again after activation.'
+      }, 503)
+    }
+  } catch (e) {
+    console.error('Contact form error:', e)
+    return c.json({ success: false, error: 'Something went wrong. Please try again.' }, 500)
+  }
+})
+
+export default app
