@@ -11,6 +11,66 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.0/css/all.min.css">
   <link rel="icon" type="image/svg+xml" href="/performance-marketing/static/favicon.svg">
   <link rel="stylesheet" href="/performance-marketing/static/style.css">
+  <style>
+    /* ── FIX 1: Mobile nav overlay when scrolled ── */
+    @media (max-width: 768px) {
+      .nav-links.active {
+        position: fixed !important;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        width: 100vw !important;
+        height: 100vh !important;
+        background: #0a0a1a !important;
+        z-index: 9998 !important;
+        display: flex !important;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 28px;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+      .hamburger {
+        z-index: 9999 !important;
+        position: relative;
+      }
+      .navbar {
+        z-index: 9997 !important;
+      }
+    }
+
+    /* ── FIX 4: Hero desktop centering ── */
+    @media (min-width: 769px) {
+      .hero-content {
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      .hero-title, .hero-subtitle, .hero-badge {
+        text-align: center;
+        max-width: 800px;
+      }
+      .hero-actions {
+        justify-content: center;
+      }
+      .hero-trust {
+        justify-content: center;
+      }
+    }
+
+    /* ── FIX 3: "Free" highlight in CTAs ── */
+    .cta-free {
+      background: linear-gradient(135deg, #ffd700, #ffaa00);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      font-weight: 800;
+    }
+  </style>
 </head>
 <body>
 
@@ -26,7 +86,7 @@
         <li><a href="#results" class="nav-link">Results</a></li>
         <li><a href="#case-studies" class="nav-link">Case Studies</a></li>
         <li><a href="#testimonials" class="nav-link">Testimonials</a></li>
-        <li><a href="#contact" class="nav-cta">Let's Talk</a></li>
+        <li><a href="#contactFormWrap" class="nav-cta">Let's Talk</a></li>
       </ul>
       <button class="hamburger" id="hamburger" aria-label="Toggle menu">
         <span></span><span></span><span></span>
@@ -56,9 +116,9 @@
         <strong>$100M+ revenue generated. 100+ accounts managed.</strong>
       </p>
       <div class="hero-actions animate-in" data-delay="3">
-        <a href="#contact" class="btn-primary">
+        <a href="#contactFormWrap" class="btn-primary">
           <i class="fas fa-rocket"></i>
-          Get a Free Strategy Call
+          Get a <span class="cta-free">Free</span> Strategy Call
         </a>
         <a href="#case-studies" class="btn-secondary">
           <i class="fas fa-chart-bar"></i>
@@ -120,7 +180,7 @@
           <div class="stat-desc">Including 50+ DTC brands with consistent YoY ROAS growth</div>
         </div>
         <div class="stat-card animate-on-scroll">
-          <div class="stat-icon"><i class="fas fa-trending-up"></i></div>
+          <div class="stat-icon"><i class="fas fa-arrow-trend-up"></i></div>
           <div class="stat-number" data-target="25" data-suffix="%">0%</div>
           <div class="stat-label">Revenue Growth MoM</div>
           <div class="stat-desc">Consistent month-over-month gains for eCommerce clients</div>
@@ -190,7 +250,7 @@
             </div>
           </div>
           <div class="about-actions">
-            <a href="#contact" class="btn-primary"><i class="fas fa-calendar"></i> Book a Strategy Call</a>
+            <a href="#contactFormWrap" class="btn-primary"><i class="fas fa-calendar"></i> Book a <span class="cta-free">Free</span> Strategy Call</a>
             <a href="https://www.linkedin.com/in/abhishek-ppc-expert/" target="_blank" class="btn-ghost"><i class="fab fa-linkedin"></i> LinkedIn</a>
           </div>
         </div>
@@ -212,7 +272,7 @@
           <h3>Google Ads Management</h3>
           <p>Full-funnel strategy: Search, Shopping, Performance Max, Display &amp; Video — structured for scale with rigorous query-level management and weekly reporting.</p>
           <div class="service-chips"><span>Search &amp; Shopping</span><span>PMax</span><span>Bid Strategy</span><span>Reporting</span></div>
-          <a href="#contact" class="service-cta">Get Started <i class="fas fa-arrow-right"></i></a>
+          <a href="#contactFormWrap" class="service-cta">Get Started <i class="fas fa-arrow-right"></i></a>
         </div>
 
         <div class="service-card animate-on-scroll">
@@ -220,7 +280,7 @@
           <h3>Meta Ads</h3>
           <p>Advanced audience architecture, creative testing frameworks, and CAPI implementation for accurate attribution and profitable scaling on Facebook &amp; Instagram.</p>
           <div class="service-chips"><span>Audience Segmentation</span><span>CAPI</span><span>Retargeting</span><span>Creative Testing</span></div>
-          <a href="#contact" class="service-cta">Get Started <i class="fas fa-arrow-right"></i></a>
+          <a href="#contactFormWrap" class="service-cta">Get Started <i class="fas fa-arrow-right"></i></a>
         </div>
 
         <div class="service-card animate-on-scroll">
@@ -228,7 +288,7 @@
           <h3>Tracking, Feeds &amp; Audit</h3>
           <p>GA4, GTM, CAPI &amp; Enhanced Conversions setup. Merchant Center feed engineering. Full account audits with a 90-day growth roadmap and quick-win identification.</p>
           <div class="service-chips"><span>GA4 &amp; GTM</span><span>Feed Engineering</span><span>Full Audit</span><span>Lead Gen</span></div>
-          <a href="#contact" class="service-cta">Get Started <i class="fas fa-arrow-right"></i></a>
+          <a href="#contactFormWrap" class="service-cta">Get Started <i class="fas fa-arrow-right"></i></a>
         </div>
       </div>
     </div>
@@ -304,8 +364,8 @@
             <div class="case-location"><i class="fas fa-map-marker-alt"></i> USA</div>
           </div>
           <div class="case-study-icon"><i class="fas fa-wrench"></i></div>
-          <h3 class="case-study-title">Plumbing Business - Paid Media</h3>
-          <p class="case-study-desc">Managed full Paid Media Marketing for a plumbing business across 50+ US cities. Increased overall ROI by 30%+ and reduced CPL by 37% for new customers via Google Ads &amp; CRO.</p>
+          <h3 class="case-study-title">Plumbing Business — Digital Marketing Lead</h3>
+          <p class="case-study-desc">Managed full digital marketing for a plumbing business across 50+ US cities. Increased overall ROI by 30%+ and reduced CPL by 37% for new customers via Google Ads &amp; CRO.</p>
           <div class="case-metrics">
             <div class="metric-item">
               <span class="metric-value highlight">+30%</span>
@@ -363,8 +423,8 @@
           <div class="testimonial-author">
             <div class="author-avatar"><i class="fas fa-user"></i></div>
             <div class="author-info">
-              <strong>Founder</strong>
-              <span>Google Ads Marketing Agency</span>
+              <strong>Multiple eCommerce Store Owner</strong>
+              <span>Google Ads — Multiple eCommerce Stores · Apr–May 2025</span>
               <div class="platform-tag upwork"><i class="fas fa-briefcase"></i> Upwork Client · 5.0★</div>
             </div>
           </div>
@@ -486,7 +546,7 @@
     <div class="container">
       <div class="contact-compact">
         <div class="contact-meta animate-on-scroll">
-          <h2 class="contact-heading">Book a Free <span class="gradient-text">Strategy Call</span></h2>
+          <h2 class="contact-heading">Book a <span class="cta-free">Free</span> <span class="gradient-text">Strategy Call</span></h2>
           <p class="contact-sub">30-min audit + roadmap. No fluff, no obligation.</p>
           <div class="contact-trust-row">
             <span><i class="fas fa-globe"></i> US · UK · CA · AU · UAE</span>
@@ -600,7 +660,7 @@
         <div class="footer-cta-block">
           <h4>Ready to Scale?</h4>
           <p>Get a free 30-minute strategy call and paid media audit.</p>
-          <a href="#contact" class="btn-primary">Book Free Call</a>
+          <a href="#contactFormWrap" class="btn-primary">Book <span class="cta-free">Free</span> Call</a>
           <div class="footer-trust">
             <div class="trust-row">
               <i class="fas fa-star"></i>
@@ -631,51 +691,24 @@
       <span>Book a Free Call</span>
     </button>
   </div>
-<script>
-  if (window.location.search.includes('submitted=1')) {
-    document.body.innerHTML = `
-      <div style="
-        min-height: 100vh;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        background: #0a0a1a;
-        font-family: 'Inter', sans-serif;
-        text-align: center;
-        padding: 40px 20px;
-      ">
-        <div style="
-          background: rgba(255,255,255,0.05);
-          border: 1px solid rgba(255,255,255,0.1);
-          border-radius: 24px;
-          padding: 60px 48px;
-          max-width: 520px;
-          width: 100%;
-        ">
-          <div style="font-size: 56px; margin-bottom: 24px;">✅</div>
-          <h1 style="color: #ffffff; font-size: 32px; font-weight: 700; margin: 0 0 16px;">
-            Thank You!
-          </h1>
-          <p style="color: rgba(255,255,255,0.7); font-size: 18px; line-height: 1.6; margin: 0 0 32px;">
-            Your message has been received.<br>
-            I'll review your details and get back to you <strong style="color:#fff;">within 24 hours</strong> with a personalised strategy overview.
-          </p>
-          <a href="/performance-marketing/" style="
-            display: inline-block;
-            background: linear-gradient(135deg, #6366f1, #8b5cf6);
-            color: white;
-            padding: 14px 32px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 16px;
-          ">← Back to Home</a>
-        </div>
-      </div>
-    `;
-  }
-</script>
+
   <script src="/performance-marketing/static/app.js"></script>
+  <script>
+    // Thank-you page on ?submitted=1
+    if (window.location.search.includes('submitted=1')) {
+      document.body.innerHTML = `
+        <div style="min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;background:#0a0a1a;font-family:'Inter',sans-serif;text-align:center;padding:40px 20px;">
+          <div style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:24px;padding:60px 48px;max-width:520px;width:100%;">
+            <div style="font-size:56px;margin-bottom:24px;">✅</div>
+            <h1 style="color:#ffffff;font-size:32px;font-weight:700;margin:0 0 16px;">Thank You!</h1>
+            <p style="color:rgba(255,255,255,0.7);font-size:18px;line-height:1.6;margin:0 0 32px;">
+              Your message has been received.<br>
+              I'll review your details and get back to you <strong style="color:#fff;">within 24 hours</strong> with a personalised strategy overview.
+            </p>
+            <a href="/performance-marketing/" style="display:inline-block;background:linear-gradient(135deg,#6366f1,#8b5cf6);color:white;padding:14px 32px;border-radius:50px;text-decoration:none;font-weight:600;font-size:16px;">← Back to Home</a>
+          </div>
+        </div>`;
+    }
+  </script>
 </body>
 </html>
