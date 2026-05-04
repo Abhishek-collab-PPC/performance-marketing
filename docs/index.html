@@ -14,31 +14,41 @@
   <style>
     /* ── FIX 1: Mobile nav overlay when scrolled ── */
     @media (max-width: 768px) {
+      .navbar {
+        position: fixed !important;
+        top: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        z-index: 9990 !important;
+      }
       .nav-links.active {
         position: fixed !important;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
+        top: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        bottom: 0 !important;
         width: 100vw !important;
         height: 100vh !important;
         background: #0a0a1a !important;
-        z-index: 9998 !important;
+        z-index: 9995 !important;
         display: flex !important;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        gap: 28px;
-        margin: 0;
-        padding: 0;
-        list-style: none;
+        flex-direction: column !important;
+        align-items: center !important;
+        justify-content: center !important;
+        gap: 32px !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        list-style: none !important;
+      }
+      .nav-links.active li a {
+        font-size: 22px !important;
+        color: #fff !important;
       }
       .hamburger {
+        position: fixed !important;
+        top: 18px !important;
+        right: 20px !important;
         z-index: 9999 !important;
-        position: relative;
-      }
-      .navbar {
-        z-index: 9997 !important;
       }
     }
 
@@ -118,7 +128,7 @@
       <div class="hero-actions animate-in" data-delay="3">
         <a href="#contactFormWrap" class="btn-primary">
           <i class="fas fa-rocket"></i>
-          Get a <span class="cta-free">Free</span> Strategy Call
+          Get a Free Strategy Call
         </a>
         <a href="#case-studies" class="btn-secondary">
           <i class="fas fa-chart-bar"></i>
@@ -250,7 +260,7 @@
             </div>
           </div>
           <div class="about-actions">
-            <a href="#contactFormWrap" class="btn-primary"><i class="fas fa-calendar"></i> Book a <span class="cta-free">Free</span> Strategy Call</a>
+            <a href="#contactFormWrap" class="btn-primary"><i class="fas fa-calendar"></i> Book a Free Strategy Call</a>
             <a href="https://www.linkedin.com/in/abhishek-ppc-expert/" target="_blank" class="btn-ghost"><i class="fab fa-linkedin"></i> LinkedIn</a>
           </div>
         </div>
@@ -546,7 +556,7 @@
     <div class="container">
       <div class="contact-compact">
         <div class="contact-meta animate-on-scroll">
-          <h2 class="contact-heading">Book a <span class="cta-free">Free</span> <span class="gradient-text">Strategy Call</span></h2>
+          <h2 class="contact-heading">Book a Free <span class="gradient-text">Strategy Call</span></h2>
           <p class="contact-sub">30-min audit + roadmap. No fluff, no obligation.</p>
           <div class="contact-trust-row">
             <span><i class="fas fa-globe"></i> US · UK · CA · AU · UAE</span>
@@ -660,7 +670,7 @@
         <div class="footer-cta-block">
           <h4>Ready to Scale?</h4>
           <p>Get a free 30-minute strategy call and paid media audit.</p>
-          <a href="#contactFormWrap" class="btn-primary">Book <span class="cta-free">Free</span> Call</a>
+          <a href="#contactFormWrap" class="btn-primary">Book Free Call</a>
           <div class="footer-trust">
             <div class="trust-row">
               <i class="fas fa-star"></i>
@@ -686,9 +696,9 @@
 
   <!-- ========== STICKY CTA ========== -->
   <div class="sticky-cta" id="stickyCta">
-    <button class="sticky-cta-btn" id="stickyCTABtn" onclick="document.getElementById('contactFormWrap').scrollIntoView({behavior:'smooth',block:'start'})">
+    <button class="sticky-cta-btn" id="stickyCTABtn" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth',block:'start'})">
       <i class="fas fa-calendar-check"></i>
-      <span>Book a Free Call</span>
+      <span>Book a <span class="cta-free">Free</span> Call</span>
     </button>
   </div>
 
